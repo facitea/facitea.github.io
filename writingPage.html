@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글쓰기</title>
+</head>
+<body>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDU5hIzUSfHwHgPxsvRdH6QkLM-_8jaekU",
+            authDomain: "hawktalk-b0a71.firebaseapp.com",
+            databaseURL: "https://hawktalk-b0a71-default-rtdb.firebaseio.com",
+            projectId: "hawktalk-b0a71",
+            storageBucket: "hawktalk-b0a71.appspot.com",
+            messagingSenderId: "537777830041",
+            appId: "1:537777830041:web:1b5ce3e943d55c09d1e008",
+            measurementId: "G-7T0M3EK19Q"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        
+        /*
+        db.collection("게시판").add({
+            title: "Ada",
+            content: "Lovelace",
+            date: 1815
+        })
+        .then((docRef) => {
+            console.log("Document written with ID: ", docRef.id);
+        })
+        .catch((error) => {
+            console.error("Error adding document: ", error);
+        });
+        */
+ 
+            
+
+        
+
+        function submit(){
+            var today = new Date();
+
+            var year = today.getFullYear();
+            var month = ('0' + (today.getMonth() + 1)).slice(-2);
+            var day = ('0' + today.getDate()).slice(-2);
+
+            var dateString = year + '-' + month  + '-' + day;
+
+            var hours = ('0' + today.getHours()).slice(-2); 
+            var minutes = ('0' + today.getMinutes()).slice(-2);
+            var seconds = ('0' + today.getSeconds()).slice(-2); 
+
+            var timeString = hours + ':' + minutes  + ':' + seconds;
+            var dateAndTime = dateString + " " + timeString; //날짜 만드는 함수 새로 만들어야겠네 후..
+
+
+            let title = document.getElementById('title').value;
+            let content = document.getElementById('content').value;
+
+            db.collection("게시판").add({
+                title: title,
+                content: content,
+                date: dateAndTime
+            })
+            .then((docRef) => {
+                console.log("Document written with ID: ", docRef.id);
+            })
+            .catch((error) => {
+                console.error("Error adding document: ", error);
+            });
+        }
+
+        
+
+
+
+        
+        
+        //https://firebase.google.com/docs/firestore/quickstart#web-version-8 주소 나온대로 치면 다 된다.
+        //https://codingapple.com/unit/firebase-installation-with-npm/ 참고할것
+    </script>
+
+    
+
+    <input type="text" id="title">
+    <p>
+    <textarea id="content"></textarea>
+    <p>
+    <input type="button" value="클릭" onclick="submit();">
+    
+</body>
+</html>
