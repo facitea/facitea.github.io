@@ -112,59 +112,32 @@
         }) //'결과'는 임의로 삽입한 프로퍼티이다.
         //forEach를 통해 결과로 나온 배열을 연달아 출력한다.
         */
+        /*
+        db.collection('게시판').get().then((결과)=>
+            {
+            결과.forEach((doc)=>{
+                list.push(doc.data())
+            })            
+        }) //순수 데이터를 list 변수에 저장
+        */
 
-        /*이렇게하면 되는데 ㅠㅠ 중첩오지네+
-        db.collection('게시판').get().then((결과)=>{
+        db.collection('게시판').orderBy("timeStamp", "desc").limit(100).get().then((결과)=>
+            {
             결과.forEach((doc)=>{
                 console.log(doc.data())
                 list.push(doc.data())
-                console.log(list)
-            })
-        })
-        */
+            })            
+        }) //예를 들어 알파벳순으로 처음 n개 항목을 쿼리하는 방법은 다음과 같습니다. 내림차순으로 정렬은 , orderBy("timeStamp", "desc")
 
-        /*
-        db.collection('게시판').get().then((doc)=>{
+        while(list.length){
+            //일단 총게시글 나누기 10을 하면 몇장까지 나오는 지 알 수 있다.
+            //10장이 넘어가면(=100게시글) >>표시로 확장가능
+            //1페이지는 0~9, 2페이지는 10~19, 3페이지는 20~29 같은 형식으로 로딩을 해야한다.
+            //아니야 그냥 10페이지씩 배열에 담아버리는게 낫나?
 
-            /*결과.forEach((doc)=>{
-                list.push(doc.data())
-                console.log(list)
-            })
-            console.log(doc.data())*/
-        /*
-            if (doc.exists){
-                console.log("Document data:", doc.data());
-            } else {
-                console.log("No such document!");
-            }
-        }).catch((error) => {
-            console.log("Error getting document:", error);
-        });
-        */
 
-        db.collection('게시판').get().then((결과)=>
-            {
-            // 결과.forEach((doc)=>{
-
-            //     console.log(doc.data())
-
-            //     list.push(doc.data())
-            //     console.log(list)
-            // })
-               
-            
-            while(결과.length){(doc)=>{
-                 console.log(doc.data())
-
-                 list.push(doc.data())
-                 console.log(list)
-                }
-            }
-            
-
-            
-            
-        })
+        }
+        
     </script>
 </body>
 </html>

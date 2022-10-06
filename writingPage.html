@@ -68,7 +68,7 @@
             db.collection("게시판").add({
                 title: title,
                 content: content,
-                date: dateAndTime
+                timeStamp: dateAndTime
             })
             .then((docRef) => {
                 console.log("Document written with ID: ", docRef.id);
