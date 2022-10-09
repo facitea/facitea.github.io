@@ -11,17 +11,13 @@
             padding: 0;
         }
         .wrapper{
-            width: 70%;
+            width: 100%;
             margin: 0 auto;
         }
         ul{
             list-style: none;
             margin: 0;
             padding: 0;
-        }
-        header{
-            display: flex;
-            background-color: lightgray;
         }
         ul{
             display: flex;
@@ -30,6 +26,16 @@
             text-decoration: none;
             color: black;
         }
+        header{
+            display: flex;
+            background-color: lightgray;
+        }
+        @media all and (min-width:768px) {
+            .wrapper{
+                width: 70%;
+                margin: 0 auto;
+            }
+        }/*데스크탑은 특별하게 적용*/
     </style>
 </head>
 <body>
