@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animall</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .wrapper{
+            width: 100%;
+            margin: 0 auto;
+        }
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav{
+            display: flex;
+            justify-content: space-between;
+        }
+        .navLeftSide{
+            display: inline-block;
+        }
+        .navRightSide{
+            display: inline-block;
+            justify-content: flex-end;
+            margin: 2px 6px 2px 2px; /*상좌우하*/
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        header{
+            background-color: lightgray;
+        }
+        h1{
+            margin: 4px 4px 4px 7px;
+            display: inline-block;
+        }
+        .navFlexItem{
+            margin: 10px 2px 2px 2px;
+            text-align: center;
+        }
+        @media all and (min-width:992px) {
+            .wrapper{
+                width: 70%;
+                margin: 0 auto;
+            }
+        }/*데스크탑은 특별하게 적용*/
+    </style>
+</head>
+<body>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+    <script src="firebase.js"></script>
+
+    <div class="wrapper">
+        <header>
+            <nav>
+                <div class="navLeftSide">
+                    <h1><a href="/">Animall</a></h1>
+                </div>
+                <div class="navRightSide">
+                    <ul>
+                        <li class="navFlexItem"><a href="/board">Board</a></li>
+                        <li class="navFlexItem"><a href="#">Training</a></li>
+                        <li class="navFlexItem"><a href="#">Shop</a></li>
+                        <li class="navFlexItem"><a href="#">Trip</a></li>
+                        <li class="navFlexItem"><a href="/writing">Me</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+    </div>
+</body>
+</html>

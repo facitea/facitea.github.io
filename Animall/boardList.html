@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글목록</title>
+    <style>
+        table{
+            border: 1px solid #444444;
+            width: 800px;
+        }
+        th, tr, td{
+            border: 1px solid #444444;
+        }
+        .titleBox{
+            width: 30%;
+        }
+        .dateBox{
+            width: 10%;
+        }
+
+    </style>
+</head>
+<body>
+    <table>
+            <tr>
+                <th class="titleBox">제목</th>
+                <th class="contentBox">내용</th>
+                <th class="dateBox">날짜</th>
+            </tr>
+            <tr>
+                <td id="title1"></td>
+                <td id="content1"></td>
+                <td id="date1"></td>
+            </tr>
+            <tr>
+                <td id="title2"></td>
+                <td id="content2"></td>
+                <td id="date3"></td>
+            </tr>
+            <tr>
+                <td id="title3"></td>
+                <td id="content3"></td>
+                <td id="date1"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+    </table>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+    <script src="firebase.js"></script>
+    <script>
+        //doc.data(); 원시적인 데이터인듯
+
+        var list = [];//게시글을 배열에 담는다
+        /*
+        db.collection('게시판').get().then((결과)=>{
+            결과.forEach((doc)=>{
+                //console.log(doc.data()) =>콘솔로 하나씩 찍힘
+            })
+        }) //'결과'는 임의로 삽입한 프로퍼티이다.
+        //forEach를 통해 결과로 나온 배열을 연달아 출력한다.
+        */
+        /*
+        db.collection('게시판').get().then((결과)=>
+            {
+            결과.forEach((doc)=>{
+                list.push(doc.data())
+            })            
+        }) //순수 데이터를 list 변수에 저장
+        */
+
+        db.collection('게시판').orderBy("timeStamp", "desc").limit(100).get().then((결과)=>
+            {
+            결과.forEach((doc)=>{
+                console.log(doc.data())
+                list.push(doc.data())
+            })            
+        }) //예를 들어 알파벳순으로 처음 n개 항목을 쿼리하는 방법은 다음과 같습니다. 내림차순으로 정렬은 , orderBy("timeStamp", "desc")
+        
+
+        //startAt() 또는 startAfter() 메서드를 사용하여 쿼리의 시작점을 정의합니다.
+    </script>
+</body>
+</html>
