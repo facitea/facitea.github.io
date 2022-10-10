@@ -1,3 +1,6 @@
+# new_crud
+파이어베이스 연동 crud 프로젝트
+
 https://velog.io/@chchaeun/Firebase%EC%99%80-Javascript%EB%A1%9C-To-do-list-%EB%A7%8C%EB%93%A4%EA%B8%B0
 
 참고.
