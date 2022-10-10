@@ -16,5 +16,6 @@ https://velog.io/@chchaeun/Firebase%EC%99%80-Javascript%EB%A1%9C-To-do-list-%EB%
 22/10/10
 - https://velog.io/@dbk03053/Firestore-Paging-%EA%B2%8C%EC%8B%9C%EA%B8%80-%EB%A6%AC%EC%8A%A4%ED%8A%B8-%EC%AA%BC%EA%B0%9C%EC%84%9C-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0
 - 섬세한 Firebase 게시글 설명이 되어있다.
+- https://velog.io/@kina/%EA%B0%9C%EC%9D%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-firebase%EB%A1%9C-board-service-%EB%A7%8C%EB%93%A4%EA%B8%B0-1
 
 ![image](https://user-images.githubusercontent.com/89388117/194795756-f84c872a-adda-466b-9e1d-b0dc7b647037.png)
