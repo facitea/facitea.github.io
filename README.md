@@ -12,3 +12,7 @@ https://velog.io/@chchaeun/Firebase%EC%99%80-Javascript%EB%A1%9C-To-do-list-%EB%
   > - table에 동적으로 출력하는 일만 남았다.
   > - 매번 새로고침할때마다 모든 게시글 데이터를 가져오면 비용 문제가 분명 발생할 것.
   > - firebase 특성 상 클라이언트 로직으로 모두 불러와서 나열해야하는데 해결 방법을 찾아야 한다.
+
+22/10/10
+- https://velog.io/@dbk03053/Firestore-Paging-%EA%B2%8C%EC%8B%9C%EA%B8%80-%EB%A6%AC%EC%8A%A4%ED%8A%B8-%EC%AA%BC%EA%B0%9C%EC%84%9C-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0
+- 섬세한 Firebase 게시글 설명이 되어있다.
