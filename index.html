@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" user-scalable=no>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animall</title>
     <style>
         body{
@@ -18,21 +18,38 @@
             list-style: none;
             margin: 0;
             padding: 0;
-        }
-        ul{
             display: flex;
+        }
+        nav{
+            display: flex;
+            justify-content: space-between;
+        }
+        .navLeftSide{
+            display: inline-block;
+        }
+        .navRightSide{
+            display: inline-block;
+            justify-content: flex-end;
+            margin: 2px 6px 2px 2px; /*상좌우하*/
         }
         a{
             text-decoration: none;
             color: black;
         }
         header{
-            display: flex;
             background-color: lightgray;
+        }
+        h1{
+            margin: 4px 4px 4px 7px;
+            display: inline-block;
+        }
+        .navFlexItem{
+            margin: 10px 2px 2px 2px;
+            text-align: center;
         }
         @media all and (min-width:992px) {
             .wrapper{
-                width: 80%;
+                width: 70%;
                 margin: 0 auto;
             }
         }/*데스크탑은 특별하게 적용*/
@@ -47,15 +64,19 @@
 
     <div class="wrapper">
         <header>
-            <h1>Animall</h1>
             <nav>
-                <ul>
-                    <li><a href="#">Board</a></li>
-                    <li><a href="#">Training</a></li>
-                    <li><a href="#">Shop</a></li>
-                    <li><a href="#">Trip</a></li>
-                    <li><a href="#">Me</a></li>
-                </ul>
+                <div class="navLeftSide">
+                    <h1><a href="/">Animall</a></h1>
+                </div>
+                <div class="navRightSide">
+                    <ul>
+                        <li class="navFlexItem"><a href="/board">Board</a></li>
+                        <li class="navFlexItem"><a href="#">Training</a></li>
+                        <li class="navFlexItem"><a href="#">Shop</a></li>
+                        <li class="navFlexItem"><a href="#">Trip</a></li>
+                        <li class="navFlexItem"><a href="/writing">Me</a></li>
+                    </ul>
+                </div>
             </nav>
         </header>
     </div>
