@@ -21,3 +21,6 @@ https://velog.io/@chchaeun/Firebase%EC%99%80-Javascript%EB%A1%9C-To-do-list-%EB%
 ![image](https://user-images.githubusercontent.com/89388117/194795756-f84c872a-adda-466b-9e1d-b0dc7b647037.png)
 
 - https://cocoder16.tistory.com/72 mongoDB관련 링크
+
+# DB 설계와 관련해서
+- 사진 같은 대용량 파일은 Firebase에서 관리하게 하는게 
