@@ -1,0 +1,47 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.wrapper{
+    width: 100%;
+    margin: 0 auto;
+}
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+}
+.navLeftSide{
+    display: inline-block;
+}
+.navRightSide{
+    display: inline-block;
+    justify-content: flex-end;
+    margin: 2px 6px 2px 2px; /*상좌우하*/
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+header{
+    background-color: lightgray;
+}
+h1{
+    margin: 4px 4px 4px 7px;
+    display: inline-block;
+}
+.navFlexItem{
+    margin: 10px 2px 2px 2px;
+    text-align: center;
+}
+@media all and (min-width:992px) {
+    .wrapper{
+        width: 992px;
+        margin: 0 auto;
+    }
+}
