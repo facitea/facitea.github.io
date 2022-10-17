@@ -60,3 +60,5 @@ forEach를 사용하여 데이터를 배열에 담아서 table에 출력하려�
 
 # 22/10/17
 - 휴가에서 복귀했다. 휴가 가기 전, 오늘 해야할 것들을 적어놓아서 과거의 나에게 너무 고맙다.
+
+- https://mateeth.tistory.com/m/6 firebase와 세션
