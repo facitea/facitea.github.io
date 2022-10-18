@@ -90,3 +90,6 @@ forEach를 사용하여 데이터를 배열에 담아서 table에 출력하려�
 - firebase 토큰에 대해서도 찾아보자
 
 - https://firebase.google.com/docs/auth/web/manage-users?hl=ko 로그인한 유저 있는지 확인가능
+
+### 로그인 버튼 누르는 순간 이미 세션에는 임의의 세션값이 입력돼있다. 크롬 개발자 도구로 보면 됨.
+- 고로 이제 페이지가 열렸을 때 세션이 있는지 확인하면 될 듯?
