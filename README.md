@@ -112,3 +112,4 @@ https://firebase.google.com/docs/auth/web/manage-users#web-version-8_2
 
 - 세션 key값을 받아서 그 값으로 value값을 얻고 거기서 사용자 정보를 확인하여
 - 로그인 당시 uid값과 세션의 uid값을 대조하여 일치하면 진행하면 어떨까!
+
