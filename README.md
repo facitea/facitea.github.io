@@ -86,3 +86,5 @@ forEach를 사용하여 데이터를 배열에 담아서 table에 출력하려�
 # 파이어베이스 로그아웃은 왜 있지?
 
 ## https://mateeth.tistory.com/m/6 돌고 돌아 이것이 근본
+
+- firebase 토큰에 대해서도 찾아보자
