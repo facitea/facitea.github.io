@@ -73,3 +73,5 @@ forEach를 사용하여 데이터를 배열에 담아서 table에 출력하려�
 - 처음 로그인 시 세션에 회원 id값을 대입하고, 서버로부터 전체 회원 id값과 세션에 저장된 id값을 대조하는 식으로 하는 방법이 있겠지만 보안상 분명 문제가 있을 것이다.
 
 -https://firebase.google.com/docs/auth/web/manage-users?hl=ko Firebase에서 사용자 관리하기
+
+- 커스텀 토큰을 만드는 방법이 있다 JWT 그러나 그것까지 공부하면 나는 백엔드 개발자(?)
