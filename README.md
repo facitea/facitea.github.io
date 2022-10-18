@@ -88,3 +88,5 @@ forEach를 사용하여 데이터를 배열에 담아서 table에 출력하려�
 ## https://mateeth.tistory.com/m/6 돌고 돌아 이것이 근본
 
 - firebase 토큰에 대해서도 찾아보자
+
+- https://firebase.google.com/docs/auth/web/manage-users?hl=ko 로그인한 유저 있는지 확인가능
