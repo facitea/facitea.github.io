@@ -117,3 +117,5 @@ https://firebase.google.com/docs/auth/web/manage-users#web-version-8_2
 
 # stsTokenManager 세션에 보면 위 항목이 있다.
 - 이것을 활용하는게 진짜 포인트일텐데 어떻게 해야할지 
+
+- https://firebase.google.com/docs/auth/admin/verify-id-tokens?hl=ko#node.js 혹시라도 node.js express 서버로 돌리게 되면 참고하면 좋을 부분. 토큰.
