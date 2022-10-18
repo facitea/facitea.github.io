@@ -84,3 +84,5 @@ forEach를 사용하여 데이터를 배열에 담아서 table에 출력하려�
 - https://ldevlog.tistory.com/m/28 간편하게 구현하려면 이걸 보자. 이후에 리팩토링 해도 되잖아~
 
 # 파이어베이스 로그아웃은 왜 있지?
+
+## https://mateeth.tistory.com/m/6 돌고 돌아 이것이 근본
