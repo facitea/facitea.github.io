@@ -97,3 +97,15 @@ forEach를 사용하여 데이터를 배열에 담아서 table에 출력하려�
 일단은 간편하게 세션이 있으면 그냥 로그인된걸로 치게 할까?
 
 - 회원가입시 개인정보를 추가로 DB에 작성하게 하는게 나을듯. 글 작성 시 닉네임 등 개인정보도 로딩을 해야함;
+
+- displayName:null
+- email:"yjhws2011@naver.com"
+- phoneNumber: null
+- photoURL:null
+- providerId:"password"
+- uid:"yjhws2011@naver.com"
+
+- 세션에는 위와 같은 값이 들어간다.
+
+https://firebase.google.com/docs/auth/web/manage-users#web-version-8_2
+- 위 주소를 통해 프로필 업데이트가 가능하다.
