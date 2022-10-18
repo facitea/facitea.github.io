@@ -82,3 +82,5 @@ forEach를 사용하여 데이터를 배열에 담아서 table에 출력하려�
 - https://codingapple.com/unit/firebase-authentication-register/?id=9822 코딩애플강의 돈주고 
 
 - https://ldevlog.tistory.com/m/28 간편하게 구현하려면 이걸 보자. 이후에 리팩토링 해도 되잖아~
+
+# 파이어베이스 로그아웃은 왜 있지?
