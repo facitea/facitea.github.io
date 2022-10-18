@@ -75,3 +75,4 @@ forEach를 사용하여 데이터를 배열에 담아서 table에 출력하려�
 -https://firebase.google.com/docs/auth/web/manage-users?hl=ko Firebase에서 사용자 관리하기
 
 - 커스텀 토큰을 만드는 방법이 있다 JWT 그러나 그것까지 공부하면 나는 백엔드 개발자(?)
+- 집에 가서 todolist 최고의 예제를 참고해봐야겠다.
