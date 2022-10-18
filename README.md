@@ -78,3 +78,5 @@ forEach를 사용하여 데이터를 배열에 담아서 table에 출력하려�
 - 집에 가서 todolist 최고의 예제를 참고해봐야겠다.
 
 - https://firebase.google.com/docs/auth/admin/verify-id-tokens?hl=ko#web 이건가
+
+- https://codingapple.com/unit/firebase-authentication-register/?id=9822 코딩애플강의 돈주고 
