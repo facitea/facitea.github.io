@@ -109,3 +109,6 @@ forEach를 사용하여 데이터를 배열에 담아서 table에 출력하려�
 
 https://firebase.google.com/docs/auth/web/manage-users#web-version-8_2
 - 위 주소를 통해 프로필 업데이트가 가능하다.
+
+- 세션 key값을 받아서 그 값으로 value값을 얻고 거기서 사용자 정보를 확인하여
+- 로그인 당시 uid값과 세션의 uid값을 대조하여 일치하면 진행하면 어떨까!
