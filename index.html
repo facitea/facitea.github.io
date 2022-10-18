@@ -22,15 +22,27 @@
                 </div>
                 <div class="navRightSide">
                     <ul>
-                        <li class="navFlexItem"><a href="/board">Board</a></li>
+                        <li class="navFlexItem"><a href="/boardList.html">Board</a></li>
                         <li class="navFlexItem"><a href="#">Training</a></li>
                         <li class="navFlexItem"><a href="#">Shop</a></li>
                         <li class="navFlexItem"><a href="#">Trip</a></li>
-                        <li class="navFlexItem"><a href="/writing">Me</a></li>
+                        <li class="navFlexItem"><a href="/myPage.html">Me</a></li>
                     </ul>
                 </div>
             </nav>
         </header>
     </div>
+    <script>
+        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+            .then(() => {
+                return firebase.auth().signInWithEmailAndPassword(email, pwd);
+                alert("로그인 유지 중");
+            })
+            .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                alert("로그인이 필요합니다.");
+            })
+    </script>
 </body>
 </html>

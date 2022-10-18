@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="title.css">
     <link rel="stylesheet" href="myPage.css">
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
@@ -22,15 +23,15 @@
         <header>
             <nav>
                 <div class="navLeftSide">
-                    <h1><a href="/">Animall</a></h1>
+                    <h1><a href="/index.html">Animall</a></h1>
                 </div>
                 <div class="navRightSide">
                     <ul>
-                        <li class="navFlexItem"><a href="/board">Board</a></li>
+                        <li class="navFlexItem"><a href="/boardList.html">Board</a></li>
                         <li class="navFlexItem"><a href="#">Training</a></li>
                         <li class="navFlexItem"><a href="#">Shop</a></li>
                         <li class="navFlexItem"><a href="#">Trip</a></li>
-                        <li class="navFlexItem"><a href="/writing">Me</a></li>
+                        <li class="navFlexItem"><a href="/myPage.html">Me</a></li>
                     </ul>
                 </div>
             </nav>
@@ -59,15 +60,35 @@
 
         <div class="profileTap">
             <div class="profileTable">
-                <div class="profileImageCircle">
-                    <img class="profileImage" src="msk.png" alt="일론머스크">
+                <div class="profileFirstStair">
+                    <div class="profileImageCircle">
+                        <img class="profileImage" src="msk.png" alt="일론머스크">
+                    </div>
                 </div>
-                <div>
-                    <div>이름</div>
-                    <div>자기소개</div>
-                </div>
-                <div>
-                    설정
+                <div class="profileSecondStair">
+                    <div class="relationshipTable">
+                        <table>
+                            <th>게시물</th>
+                            <th>팔로워</th>
+                            <th>팔로잉</th>
+                            <tr>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
+                            </tr>
+                        </table>
+                        <div class="personalToSetting">
+                            <div class="personalTable">
+                                <div>일론머스크</div>
+                                <div>자기소개안해</div>
+                            </div>
+                            <div class="settingTable">
+                                <span class="material-symbols-outlined">
+                                    settings
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -120,6 +141,7 @@
             const email = document.getElementById("loginEmail").value;
             const pwd = document.getElementById("loginPwd").value;
 
+
             if (!email || !pwd){
                 alert("모든 항목 기재해야합니다");
                 return;
@@ -128,36 +150,43 @@
             .then((userCredential) => {
                 // 로그인
                 var user = userCredential.user;
+
+                firebase.auth().onAuthStateChanged((user) => {
+                    sessionStorage.setItem("mySession", user.uid);
+                    console.log(user.uid);
+                }); //로그인을 하면 uid정보를 mySession세션 key값에 저장하는 함수.
+            
+                /*
+                //페이지를 불러올 때마다 세션 확인을 하는 건 너무 원시적이지 않나
+                세션확인 방법을 알아보자
+                */
+
                 alert("로그인 성공");
                 // ...
             })
             .catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
-                consolo.log("로그인 실패");
+                console.log("로그인 실패");
             });
 
         }
         //회원가입을 하면 그대로 로그인이 되게 만들자. 이건 쉽다.
 
-        window.onload(
+        
             firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
             .then(() => {
-                // In memory persistence will be applied to the signed in Google user
-                // even though the persistence was set to 'none' and a page redirect
-                // occurred.
-                return firebase.auth().signInWithRedirect(provider);
+                return firebase.auth().signInWithEmailAndPassword(email, pwd);
                 alert("로그인 유지 중");
             })
             .catch((error) => {
-                // Handle Errors here.
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 alert("로그인이 필요합니다.");
             })//오류가 있다. 이 코드는 로그인을 검증하는 코드로 추정되나, 아직 작동하지 않는다. 아마도 로그인시 세선에 id값을 넘겨주고 onload시 그 세션과 비교하여 맞다면 계속 진행하게 만들어야하지않나 싶다.
             //sessionStorage.setItem("MY_SESSION", "here"); 세션을 설정하고 가져오는 작업이 필요
 
-        )
+        
     </script>
 </body>
 </html>
