@@ -119,3 +119,8 @@ https://firebase.google.com/docs/auth/web/manage-users#web-version-8_2
 - 이것을 활용하는게 진짜 포인트일텐데 어떻게 해야할지 
 
 - https://firebase.google.com/docs/auth/admin/verify-id-tokens?hl=ko#node.js 혹시라도 node.js express 서버로 돌리게 되면 참고하면 좋을 부분. 토큰.
+
+# 22/10/19 카카오 사태에 대해
+- 기업은 처음엔 혁신적인 아이디어로 시장에 진입한다.
+- 이후 후발주자들과 경쟁한다.
+- 안정적 체제가 되면 새로운 혁신이 계속되어야한다.
