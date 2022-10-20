@@ -130,3 +130,7 @@ https://firebase.google.com/docs/auth/web/manage-users#web-version-8_2
 - 알고리즘 공부
 - 애니몰 개발
 - vue 학습
+
+기능개발vs외관개발
+회원가입시 새로운 Table 생성.
+환경설정 - 개인정보수정. 고민해볼것
