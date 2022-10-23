@@ -143,18 +143,24 @@ firebaseEmailAuth.onAuthStateChanged(function (user) {
 }
 
 출처 : https://mateeth.tistory.com/m/6
+
+
 */
+function sessionCheck(){
+    for (let i=0; i<=sessionStorage.length -1; i++){
+        if (sessionStorage.key(i).includes('firebase:authUser') == true){
+            var whatisUidinSession = JSON.parse(sessionStorage.getItem(sessionStorage.key(i))).uid;
+            //세션값을 가져오는 메소드..를 JSON화해서 uid값을 가져온다. 클로저(?) 학습이 미흡해 var를 쓴다... 리팩토링 필요.
+        }
+    }
+    
+    if(whatisUidinSession !== undefined || null){
+        alert("본인인증 완료상태입니다.");
+    }else{
+        alert("본인인증 실패상태입니다.");
+        window.location.href='#' //링크 뒤에 #이 붙으면 인증되지 않은 상태
+    }//개허접하지만 일단 세션값을 쭉 읽어내서 'firebase:authUser' 키값을 찾고 해당 value값이 있으면 인증된걸로 치자 하..
+    //인증을 해서 갖다 쓰자. 인증 안되면 아무것도 못하게 하자. 함수로 만들어서 매 순간 끼워넣어야한다.
+}
 
-const whatisUidinSession = JSON.parse(sessionStorage.getItem(sessionStorage.key(0))).uid; //세션값을 가져오는 메소드..를 JSON화해서 uid값을 가져온다.
-
-if(uid !== whatisUidinSession){
-    alert("본인인증 실패");
-}else{
-    alert("본인인증 완료");
-}//흠... 그냥 not null이면 인증된걸로 치자..
-
-if(whatisUidinSession !== null){
-    alert("본인인증 완료");
-}else{
-    alert("본인인증 실패");
-}//개허접하지만 일단 이런식으로라도 인증을 해서 갖다 쓰자. 인증 안되면 아무것도 못하게 하자. 함수로 만들어서 매 순간 끼워넣어야한다.
+window.onload = sessionCheck(); //auth.js를 로딩한 모든 페이지는 로그인 여부부터 확인하게 된다.
