@@ -158,3 +158,12 @@ shop 카테고리.
 - Sns형 게시판에 태그까지 넣으면 DB를 어떻게 관리해야하냐
 
 ### 잘 생각해보니 firebase db, storage는 고유적으로 권한 설정이 있다. 권한이 허용만 돼있다면 알아서 firebase가 세션체크해서 권한 체크해주는거 아닐까? 지금까지 뻘짓한거임?!
+
+- 집에 와서 전체적인 그림을 생각해보다가.
+- firebase로 기본적인 틀 만드는 것이 v1.0
+- node.js로 api server 연동하는 게  v2.0
+- 완전 자체 백엔드 연동 + vue 전환 + 쇼핑몰오픈 v3.0
+
+-위와 같이 흘러가면 좋겠다는 생각을 했다.
+![image](https://user-images.githubusercontent.com/89388117/197523790-c880eb05-1fc2-4ad9-9176-04d81a2ff3ce.png)
+
