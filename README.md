@@ -154,3 +154,4 @@ https://firebase.google.com/docs/auth/web/manage-users#web-version-8_2
 shop 카테고리. 
 
 - https://codingapple.com/unit/firebase-upload-image-to-storage/ 코딩애플이 도움이 많이 된다.
+- Board를 Q&A로 바꿔야겠다.
