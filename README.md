@@ -155,4 +155,4 @@ shop 카테고리.
 
 - https://codingapple.com/unit/firebase-upload-image-to-storage/ 코딩애플이 도움이 많이 된다.
 - Board를 Q&A로 바꿔야겠다.
-- Sns형 게시판에 태그까지 넣으면 진짜 난리나지 않을까?
+- Sns형 게시판에 태그까지 넣으면 DB를 어떻게 관리해야하냐
