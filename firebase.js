@@ -12,3 +12,5 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
+const storage = firebase.storage();
+const storageRef = storage.ref(); //스토리지 저장소 참조

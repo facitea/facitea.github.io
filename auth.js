@@ -21,7 +21,7 @@ function submitSignup(){
     });
 }
 
-var uid; //급하게 작업하여 부득이하게 아래함수의 uid값을  전역변수로 저장
+let uid; //급하게 작업하여 부득이하게 아래함수의 uid값을  전역변수로 저장//var에서 let으로 변경
 function submitLogin(){
     const email = document.getElementById("loginEmail").value;
     const pwd = document.getElementById("loginPwd").value;
@@ -147,9 +147,10 @@ firebaseEmailAuth.onAuthStateChanged(function (user) {
 
 */
 function sessionCheck(){
+    let whatisUidinSession;
     for (let i=0; i<=sessionStorage.length -1; i++){
         if (sessionStorage.key(i).includes('firebase:authUser') == true){
-            var whatisUidinSession = JSON.parse(sessionStorage.getItem(sessionStorage.key(i))).uid;
+            whatisUidinSession = JSON.parse(sessionStorage.getItem(sessionStorage.key(i))).uid;
             //세션값을 가져오는 메소드..를 JSON화해서 uid값을 가져온다. 클로저(?) 학습이 미흡해 var를 쓴다... 리팩토링 필요.
         }
     }

@@ -111,8 +111,8 @@
         db.collection('게시판').orderBy("timeStamp", "desc").limit(100).get().then((결과)=>
             {
             결과.forEach((doc)=>{
-                console.log(doc.data())
-                list.push(doc.data())
+                console.log(doc.data());
+                list.push(doc.data());
             })            
         }) //예를 들어 알파벳순으로 처음 n개 항목을 쿼리하는 방법은 다음과 같습니다. 내림차순으로 정렬은 , orderBy("timeStamp", "desc")
         
