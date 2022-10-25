@@ -170,5 +170,4 @@ shop 카테고리.
 # 22/10/25
 - ![image](https://user-images.githubusercontent.com/89388117/197651608-9c6634a5-f3ba-4757-b0bc-0b13046e8c12.png)
 - DB구조를 설계하는 ㄳ이 오늘 목표다.
-
-
+- https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=l1523&logNo=221796663248 참고자료
