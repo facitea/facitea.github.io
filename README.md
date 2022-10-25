@@ -167,3 +167,8 @@ shop 카테고리.
 -위와 같이 흘러가면 좋겠다는 생각을 했다.
 ![image](https://user-images.githubusercontent.com/89388117/197523790-c880eb05-1fc2-4ad9-9176-04d81a2ff3ce.png)
 
+# 22/10/25
+- ![image](https://user-images.githubusercontent.com/89388117/197651608-9c6634a5-f3ba-4757-b0bc-0b13046e8c12.png)
+- DB구조를 설계하는 ㄳ이 오늘 목표다.
+
+
