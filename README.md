@@ -176,3 +176,7 @@ shop 카테고리.
 - https://bentist.tistory.com/35
 - https://velog.io/@eunbinn/Axios-vs-Fetch
 - http와 socket 통신까지 보게 되었다.
+
+# 22/10/26
+- https://velog.io/@se030/SSR-CSR-with-JS-express
+- SSR / CSR 차이
