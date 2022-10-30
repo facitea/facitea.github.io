@@ -180,3 +180,6 @@ shop 카테고리.
 # 22/10/26
 - https://velog.io/@se030/SSR-CSR-with-JS-express
 - SSR / CSR 차이
+
+# 22/10/31
+- 25일에 계획하고 실행하지 못했던 DB구조를 코딩을 못해도 어느정도 짜놓는 것이 좋겠다.
