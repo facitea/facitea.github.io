@@ -8,6 +8,36 @@
     <link rel="stylesheet" href="title.css">
 </head>
 <body>
+    <div class="wrapper">
+        <header>
+            <nav>
+                <div class="navLeftSide">
+                    <h1><a href="/index.html">Animall</a></h1>
+                </div>
+                <div class="navRightSide">
+                    <ul>
+                        <li class="navFlexItem"><a href="./index.html">Board</a></li>
+                        <li class="navFlexItem"><a href="./index.html">Training</a></li>
+                        <li class="navFlexItem"><a href="./index.html">Shop</a></li>
+                        <li class="navFlexItem"><a href="./index.html">Trip</a></li>
+                        <li class="navFlexItem"><a href="./myPage.html">Me</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+    
+        <div class="writingForm"> 
+            <input type="text" id="title">
+            <p>
+            <textarea id="content"></textarea>
+            <p>
+            <input type="file" id="uploadImage">
+            <input type="button" id="uploadImageBtn" onclick="uploadImage();" value="이미지 업로드">
+            <p>
+            <input type="button" value="클릭" onclick="submit();">
+        </div>
+    </div>
+
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
@@ -70,40 +100,20 @@
 
 
 
+
         //웹개발시 일반적으로 이미지는 database에 업로드하지 않습니다. 일반 하드인 Storage라는 곳에 올리셔야합니다. 그리고 Storage에 저장된 url을 가져와서 database에 저장합니다.
         
         //https://firebase.google.com/docs/firestore/quickstart#web-version-8 주소 나온대로 치면 다 된다.
         //https://codingapple.com/unit/firebase-installation-with-npm/ 참고할것
-    </script>
 
-    <div class="wrapper">
-        <header>
-            <nav>
-                <div class="navLeftSide">
-                    <h1><a href="/index.html">Animall</a></h1>
-                </div>
-                <div class="navRightSide">
-                    <ul>
-                        <li class="navFlexItem"><a href="./index.html">Board</a></li>
-                        <li class="navFlexItem"><a href="./index.html">Training</a></li>
-                        <li class="navFlexItem"><a href="./index.html">Shop</a></li>
-                        <li class="navFlexItem"><a href="./index.html">Trip</a></li>
-                        <li class="navFlexItem"><a href="./myPage.html">Me</a></li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-    
-        <div class="writingForm"> 
-            <input type="text" id="title">
-            <p>
-            <textarea id="content"></textarea>
-            <p>
-            <input type="file" id="uploadImage"> 
-            <p>
-            <input type="button" value="클릭" onclick="submit();">
-        </div>
-    </div>
+
+        function uploadImage(){
+            let file = document.getElementById('uploadImage').files[0];
+            let fileName = document.getElementById('title').value;
+            let 저장할경로 = storageRef.child('profileImage/' + fileName);
+            let 업로드작업 = 저장할경로.put(file);
+        } //사진을 업로드 하는 방법 클리어. DB에 정보를 연동해서 프로필/게시글에 연결하기. 그리고 로딩하면서 가져오기까지가 목표다.
+    </script>
     
 </body>
 </html>
