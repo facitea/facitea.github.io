@@ -248,3 +248,5 @@ shop 카테고리.
 ### 게시글의 순서를 1부터 차례대로 달도록 하면 좋을 것 같다.
 - 복합색인이라는 항목이 firestore에 있다 공부하면 좋을 듯
 ### 아니면 timestamp 최신순으로 ..
+
+- https://firebase.google.com/docs/firestore/query-data/index-overview?authuser=1&hl=ko#single-field-indexes
