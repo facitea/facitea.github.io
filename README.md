@@ -188,3 +188,12 @@ shop 카테고리.
 - css position에 대한 공부를 더 해야한다.
 - DB 구조 설계는 미뤄두고 writingPage에서 storage에 이미지 업로드 하는 법을 익혔다.
 - 사진을 업로드 하는 방법 클리어. DB에 정보를 연동해서 프로필/게시글에 연결하기. 그리고 로딩하면서 가져오기까지가 목표다.
+
+# 22/11/1
+- https://firebase.google.com/docs/auth/cpp/manage-users?hl=ko
+- 위 내용을 보면 사용자가 로그인하지 않은 경우 current_user 는 nullptr을 반환합니다.
+
+- 해야 할 것이 많다.
+- 회원가입 리팩토링, 회원정보 수정 기능, 글쓰기, 글 수정, 글 읽기
+- 차차 할것 - shop(진열,결제) + training(문답,진열,결제)
+
