@@ -237,3 +237,5 @@ shop 카테고리.
 
 - firebase 게시판 페이징 을 구글링하여
 - https://lightcode.tistory.com/32 링크를 얻었다. 
+
+- 무한 스크롤 구현시 데이터를 어떻게 받아올 지 고민해보자.
