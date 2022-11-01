@@ -242,3 +242,5 @@ shop 카테고리.
 - https://firebase.google.com/docs/firestore/query-data/query-cursors?hl=ko 페이지네이션 정보가 있다!!!!!!!!!!!!!!!!
 
 - https://velog.io/@dbk03053/Firestore-Paging-%EA%B2%8C%EC%8B%9C%EA%B8%80-%EB%A6%AC%EC%8A%A4%ED%8A%B8-%EC%AA%BC%EA%B0%9C%EC%84%9C-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0
+
+# 파이어베이스 쿼리문 검색해서 더 알아
