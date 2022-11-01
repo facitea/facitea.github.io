@@ -250,3 +250,6 @@ shop 카테고리.
 ### 아니면 timestamp 최신순으로 ..
 
 - https://firebase.google.com/docs/firestore/query-data/index-overview?authuser=1&hl=ko#single-field-indexes
+
+# 22/11/2
+- https://simplevue.gitbook.io/intro/ vue 입문자 
