@@ -243,4 +243,8 @@ shop 카테고리.
 
 - https://velog.io/@dbk03053/Firestore-Paging-%EA%B2%8C%EC%8B%9C%EA%B8%80-%EB%A6%AC%EC%8A%A4%ED%8A%B8-%EC%AA%BC%EA%B0%9C%EC%84%9C-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0
 
-# 파이어베이스 쿼리문 검색해서 더 알아
+# 파이어베이스 쿼리문 검색해서 더 알아보자
+
+### 게시글의 순서를 1부터 차례대로 달도록 하면 좋을 것 같다.
+- 복합색인이라는 항목이 firestore에 있다 공부하면 좋을 듯
+### 아니면 timestamp 최신순으로 ..
