@@ -239,3 +239,4 @@ shop 카테고리.
 - https://lightcode.tistory.com/32 링크를 얻었다. 
 
 - 무한 스크롤 구현시 데이터를 어떻게 받아올 지 고민해보자.
+- https://firebase.google.com/docs/firestore/query-data/query-cursors?hl=ko 페이지네이션 정보가 있다!!!!!!!!!!!!!!!!
