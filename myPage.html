@@ -38,26 +38,7 @@
             </nav>
         </header>
 
-        <div class="modalLogIn hidden">
-            <div class="modal_overlay"></div>
-            <div class="modal_content">
-                <div>
-                    <input type="email" id="loginEmail" class="loginEmail">
-                </div>
-                <div>
-                    <input type="password" id="loginPwd" class="loginPwd">
-                </div>  
-                <div>
-                    <input type="submit" value="로그인" onclick="submitLogin();">
-                    <input type="button" value="회원가입" onclick="submitSignup();">
-                </div>
-                <div>
-                    <a href="#">비밀번호를 잊어버리셨나요?</a>
-                    <input type="button" id="closeBtn" value="X">
-                </div>
-            </div>
-            
-        </div>
+        
 
         <div class="profileTap">
             <div class="profileTable">
@@ -105,6 +86,26 @@
             <div><img src="#" alt="주커버그"></div>
         </div>
         
+        <div class="modalLogIn hidden">
+            <div class="modal_overlay"></div>
+            <div class="modal_content">
+                <div>
+                    <input type="email" id="loginEmail" class="loginEmail">
+                </div>
+                <div>
+                    <input type="password" id="loginPwd" class="loginPwd">
+                </div>  
+                <div>
+                    <input type="submit" value="로그인" onclick="submitLogin();">
+                    <input type="button" value="회원가입" onclick="submitSignup();">
+                </div>
+                <div>
+                    <a href="#">비밀번호를 잊어버리셨나요?</a>
+                    <input type="button" id="closeBtn" value="X">
+                </div>
+            </div>
+            <!--모달 오버레이가 피드 사진뒤에 위치해서 HTML 순서를 바꾸니 해결 됨.-->
+        </div>
         <!--onload를 했을 때에 인증이 되어있으면 내 정보를 보여주고, 
         인증이 되어 있지 않으면 로그인 모달창이 뜨도록 하기!
         https://www.youtube.com/watch?v=V08wXKHF_Xw-->
@@ -112,18 +113,20 @@
         <input type="button" id="notYetLogin" value="임시버튼.인증=버튼클릭">
     </div>
     <script>
-        const notYetLogin = document.getElementById('notYetLogin');
-        const modalLogIn = document.querySelector(".modalLogIn");
-        const overlay = modalLogIn.querySelector(".modal_overlay");
-        const closeBtn = modalLogIn.querySelector("#closeBtn");
+        const notYetLogin = document.getElementById('notYetLogin'); //버튼
+        const modalLogIn = document.querySelector(".modalLogIn"); //모달창 부모
+        const overlay = modalLogIn.querySelector(".modal_overlay");//모달창 자식 배경
+        const closeBtn = modalLogIn.querySelector("#closeBtn");//모달창 자식 닫기버튼
+
         const openModal = () => {
             modalLogIn.classList.remove("hidden");
-        }  
+        }  //모달창 부모 hidden 클래스 지우기
         const closeModal = () => {
             modalLogIn.classList.add("hidden");
-        }
-        overlay.addEventListener("click", closeModal);
-        closeBtn.addEventListener("click", closeModal);
+        }  //모달창 부모 hidden 클래스 그리기
+
+        overlay.addEventListener("click", closeModal); //모달창 자식 배경 누르면 배경 hidden
+        closeBtn.addEventListener("click", closeModal); //모달창 닫기 눌러도 배경 hidden
         notYetLogin.addEventListener("click", openModal); //addEventListener를 사용해 클릭하면 hidden class(display: none)을 추가하거나 삭제함
     </script>
 </body>

@@ -64,7 +64,7 @@ function submitLogin(){
 }
 //회원가입을 하면 그대로 로그인이 되게 만들자. 이건 쉽다.
 
-
+    /* 현재 사용되지 않는 로그인 유지 코드
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
     .then(() => {
         return firebase.auth().signInWithEmailAndPassword(email, pwd);
@@ -76,6 +76,8 @@ function submitLogin(){
         alert("로그인이 필요합니다.");
     })//오류가 있다. 이 코드는 로그인을 검증하는 코드로 추정되나, 아직 작동하지 않는다. 아마도 로그인시 세선에 id값을 넘겨주고 onload시 그 세션과 비교하여 맞다면 계속 진행하게 만들어야하지않나 싶다.
     //sessionStorage.setItem("MY_SESSION", "here"); 세션을 설정하고 가져오는 작업이 필요
+
+    */
 
 function getUserData(){
     const user = firebase.auth().currentUser;

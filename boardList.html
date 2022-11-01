@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BoardList</title>
+    <link rel="stylesheet" href="title.css">
+    <link rel="stylesheet" href="myPage.css">
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
     <style>
         table{
             border: 1px solid #444444;
@@ -23,7 +26,32 @@
     </style>
 </head>
 <body>
-    <table>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+    
+    <script src="firebase.js"></script>
+    <script src="auth.js"></script>
+    <div class="wrapper">
+        <header>
+            <nav>
+                <div class="navLeftSide">
+                    <h1><a href="/index.html">Animall</a></h1>
+                </div>
+                <div class="navRightSide">
+                    <ul>
+                        <li class="navFlexItem"><a href="./index.html">Board</a></li>
+                        <li class="navFlexItem"><a href="./index.html">Training</a></li>
+                        <li class="navFlexItem"><a href="./index.html">Shop</a></li>
+                        <li class="navFlexItem"><a href="./index.html">Trip</a></li>
+                        <li class="navFlexItem"><a href="./myPage.html">Me</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <table>
             <tr>
                 <th class="titleBox">제목</th>
                 <th class="contentBox">내용</th>
@@ -79,7 +107,9 @@
                 <td></td>
                 <td></td>
             </tr>
-    </table>
+        </table>
+    </div>
+    
 
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
@@ -116,6 +146,15 @@
             })            
         }) //예를 들어 알파벳순으로 처음 n개 항목을 쿼리하는 방법은 다음과 같습니다. 내림차순으로 정렬은 , orderBy("timeStamp", "desc")
         
+        /*
+        db.collection('게시판').orderBy("timeStamp", "desc").startAt(3).get().then((결과)=>
+            {
+            결과.forEach((doc)=>{
+                console.log(doc.data());
+                list.push(doc.data());
+            })            
+        }) 쉽지않다.
+        */
 
         //startAt() 또는 startAfter() 메서드를 사용하여 쿼리의 시작점을 정의합니다.
     </script>
