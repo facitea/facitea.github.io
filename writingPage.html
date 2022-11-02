@@ -60,44 +60,90 @@
         */
  
             
+        /*
+        function lastIdCheckFunc(){
+            let lastIdCheck;
+            let lastId;
+            db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((결과)=>
+                {
+                결과.forEach((doc)=>{
+                    lastIdCheck = doc.data();
+                    lastId = lastIdCheck.feedId;
+                    console.log(lastId);
+                })             
+            }) //이럼 객체 형식으로 데이터가 만들어진다. lastIdCheck의 id값 + 1 로 새 게시글의 id를 지정하자.
+            //글을 로딩할 때에는 마지막 글의 id값을 찾고 5or10만큼씩만 데이터를 가져오면 되겠다.
+            //마지막 게시글 id값을 찾는 내가 만든 메소드. ES6 적응이 어려워 그냥 이 모양을 그대로 함수에 넣어야할듯..
+        }
+        */
 
-        
+        var lastIdCheck;//document의 내용물을 얻기 위한 과정. object형식으로 반환.
+        var lastId; //DB에 저장된 가장 최신글의 feedId값 변수
+        var feedId;
 
+        function lastIdCheckFunc(){
+                
+        }
+        //async
         function submit(){
             var today = new Date();
 
             var year = today.getFullYear();
             var month = ('0' + (today.getMonth() + 1)).slice(-2);
             var day = ('0' + today.getDate()).slice(-2);
-
+ 
             var dateString = year + '-' + month  + '-' + day;
-            var simpleDateString = year + month + day;
+            //let simpleDateString = year + month + day;
 
             var hours = ('0' + today.getHours()).slice(-2); 
             var minutes = ('0' + today.getMinutes()).slice(-2);
             var seconds = ('0' + today.getSeconds()).slice(-2); 
 
             var timeString = hours + ':' + minutes  + ':' + seconds;
-            var simpleTimeString = hours + minutes + seconds;
+            //let simpleTimeString = hours + minutes + seconds;
             var dateAndTime = dateString + " " + timeString; //날짜 만드는 함수 새로 만들어야겠네 후..
-            var id = parseInt(simpleDateString + simpleTimeString);
-
+            //let id = parseInt(simpleDateString + simpleTimeString);
 
             let title = document.getElementById('title').value;
             let content = document.getElementById('content').value;
 
-            db.collection("게시판").add({
-                title: title,
-                content: content,
-                timeStamp: dateAndTime,
-                id: id
+
+           // await lastIdCheckFunc();
+            var lastIdCheck;//document의 내용물을 얻기 위한 과정. object형식으로 반환.
+            var lastId; //DB에 저장된 가장 최신글의 feedId값 변수
+            var feedId;
+
+            db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((결과)=>
+                {
+                결과.forEach((doc)=>{
+                    lastIdCheck = doc.data();//document의 내용물 = doc.data();
+                    lastId = parseInt(lastIdCheck.feedId);//DB에 있는 내가 임의로 지정한 id값은 feedId인데, 그 document의 feedid를 lastId에 담는다는 뜻
+                    feedId = parseInt(lastId + 1);
+                })             
             })
-            .then((docRef) => {
-                console.log("Document written with ID: ", docRef.id);
-            })
-            .catch((error) => {
-                console.error("Error adding document: ", error);
-            });
+
+            const submitTheContent = () => {
+                db.collection("게시판").add({
+                    title: title,
+                    content: content,
+                    timeStamp: dateAndTime,
+                    feedId: feedId
+                })                //사진 링크도 만들어야함. 
+                .then((docRef) => {
+                    console.log("Document written with ID: ", docRef.id);
+                    console.log("제목은 :", title);
+                    console.log("내용은 :", content);
+                    console.log("시간은 :", dateAndTime);
+                    console.log("ID는 :", feedId);
+                })
+                .catch((error) => {
+                    console.error("Error adding document: ", error);
+                })
+            }
+
+            setTimeout(submitTheContent, 3000); //비
+
+            
         } // timestamp는 고정하고, 만약 그것이 수정된다면 새로운 timestamp 테이블에 담아야겠다.
 
         

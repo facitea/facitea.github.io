@@ -216,15 +216,20 @@
         })
         이게 마지막 아이디어. 등록 직전 가장 최근 게시글 하나만 딱 불러와서 id값이 몇인지 확인 후 +1 하면 어떨까?
         */
-        var lastIdCheck;
-        db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((결과)=>
-            {
-            결과.forEach((doc)=>{
-                lastIdCheck = doc.data();
-                console.log(lastIdCheck.id);
-            })            
-        }) //이럼 객체 형식으로 데이터가 만들어진다. lastIdCheck의 id값 + 1 로 새 게시글의 id를 지정하자.
-        //글을 로딩할 때에는 마지막 글의 id값을 찾고 5or10만큼씩만 데이터를 가져오면 되겠다.
+
+        function lastIdCheckFunc(){
+            let lastIdCheck;
+            db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((결과)=>
+                {
+                결과.forEach((doc)=>{
+                    lastIdCheck = doc.data();
+                    console.log(lastIdCheck.id);
+                })            
+            }) //이럼 객체 형식으로 데이터가 만들어진다. lastIdCheck의 id값 + 1 로 새 게시글의 id를 지정하자.
+            //글을 로딩할 때에는 마지막 글의 id값을 찾고 5or10만큼씩만 데이터를 가져오면 되겠다.
+            return lastIdCheck; //마지막 게시글 id값을 찾는 내가 만든 메소드.
+        }
+        
 
     </script>
 </body>
