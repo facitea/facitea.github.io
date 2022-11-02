@@ -254,3 +254,13 @@ shop 카테고리.
 # 22/11/2
 - https://console.cloud.google.com/firestore/data/panel/?authuser=0&hl=ko&project=hawktalk-b0a71 구글 클라우드에서 파이어스토어 
 - https://simplevue.gitbook.io/intro/ vue 입문자 
+
+- https://hellose7.tistory.com/109
+- https://firebase.google.com/docs/firestore/query-data/index-overview?hl=ko
+- https://firebase.google.com/docs/firestore/query-data/indexing?hl=ko
+
+# 파이어베이스 
+- count 갯수만 알려준다
+- limit 갯수만큼만 보여준다.
+- orderby 속성만큼 오름차순, 내림차순으로 보여준다.
+- where 조건에 맞는 쿼리문을 반환한다.
