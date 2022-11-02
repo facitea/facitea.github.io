@@ -252,4 +252,5 @@ shop 카테고리.
 - https://firebase.google.com/docs/firestore/query-data/index-overview?authuser=1&hl=ko#single-field-indexes
 
 # 22/11/2
+- https://console.cloud.google.com/firestore/data/panel/?authuser=0&hl=ko&project=hawktalk-b0a71 구글 클라우드에서 파이어스토어 
 - https://simplevue.gitbook.io/intro/ vue 입문자 
