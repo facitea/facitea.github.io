@@ -71,13 +71,16 @@
             var day = ('0' + today.getDate()).slice(-2);
 
             var dateString = year + '-' + month  + '-' + day;
+            var simpleDateString = year + month + day;
 
             var hours = ('0' + today.getHours()).slice(-2); 
             var minutes = ('0' + today.getMinutes()).slice(-2);
             var seconds = ('0' + today.getSeconds()).slice(-2); 
 
             var timeString = hours + ':' + minutes  + ':' + seconds;
+            var simpleTimeString = hours + minutes + seconds;
             var dateAndTime = dateString + " " + timeString; //날짜 만드는 함수 새로 만들어야겠네 후..
+            var id = parseInt(simpleDateString + simpleTimeString);
 
 
             let title = document.getElementById('title').value;
@@ -86,7 +89,8 @@
             db.collection("게시판").add({
                 title: title,
                 content: content,
-                timeStamp: dateAndTime
+                timeStamp: dateAndTime,
+                id: id
             })
             .then((docRef) => {
                 console.log("Document written with ID: ", docRef.id);
@@ -112,7 +116,7 @@
             let fileName = document.getElementById('title').value;
             let 저장할경로 = storageRef.child('profileImage/' + fileName);
             let 업로드작업 = 저장할경로.put(file);
-        } //사진을 업로드 하는 방법 클리어. DB에 정보를 연동해서 프로필/게시글에 연결하기. 그리고 로딩하면서 가져오기까지가 목표다.
+        } //사진을 업로드 하는 방법 클리어. DB에 정보를 연동해서 프로필/게시글에 연결하기. 내가 알기론 게시글 id를 가져오는 쿼리가 있다. 그리고 로딩하면서 가져오기까지가 목표다.
     </script>
     
 </body>

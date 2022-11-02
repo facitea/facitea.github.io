@@ -147,16 +147,85 @@
         }) //예를 들어 알파벳순으로 처음 n개 항목을 쿼리하는 방법은 다음과 같습니다. 내림차순으로 정렬은 , orderBy("timeStamp", "desc")
         
         /*
-        db.collection('게시판').orderBy("timeStamp", "desc").startAt(3).get().then((결과)=>
+        db.collection('게시판').orderBy("id", "desc").startAt(20221102000000).get().then((결과)=>
             {
             결과.forEach((doc)=>{
                 console.log(doc.data());
                 list.push(doc.data());
             })            
-        }) 쉽지않다.
+        })
+
+        db.collection('게시판').where("timeStamp", "<", "2022-10-25 00:00:00")
+        .where("timeStamp", ">", "2022-10-01 00:00:00")
+        .get().then((결과)=>
+            {
+            결과.forEach((doc)=>{
+                console.log(doc.data());
+                list.push(doc.data());
+            })            
+        }) 이거다. 기만만큼만 정보를 뽑을 수 있다.
         */
 
+        /*
+        db.collection('게시판')
+        .where("timeStamp", ">", "2022-10-09 00:00:00")
+        .where("timeStamp", "<=", "2022-10-10 00:00:00")
+        .get().then((결과)=>
+            {
+            결과.forEach((doc)=>{
+                console.log(doc.data());
+                list.push(doc.data());
+            })            
+        })
+        이 날짜를 동적으로 
+
+        function feedLoading(){
+
+            let todayDate = "";
+            let tomorrowDate = "";
+
+            db.collection('게시판')
+            .where("timeStamp", ">", todayDate)
+            .where("timeStamp", "<=", tomorrowDate)
+            .get().then((결과)=>
+                {
+                결과.forEach((doc)=>{
+                    console.log(doc.data());
+                    list.push(doc.data());
+                })            
+            })
+            https://7942yongdae.tistory.com/40
+            날짜 빼기를 해서 00:00:00 붙여야하나
+        }
+        */
+
+        function getYmd10() {
+            var d = new Date();
+            return d.getFullYear() + ((d.getMonth() + 1) > 9 ? (d.getMonth() + 1).toString() : (d.getMonth() + 1)) + (d.getDate() > 9 ? d.getDate().toString() : "0" + d.getDate().toString());
+        }
+
         //startAt() 또는 startAfter() 메서드를 사용하여 쿼리의 시작점을 정의합니다.
+
+        /*
+        var lastIdCheck;
+        db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((결과)=>
+            {
+            결과.forEach((doc)=>{
+                JSON.Sdoc.data();
+            })            
+        })
+        이게 마지막 아이디어. 등록 직전 가장 최근 게시글 하나만 딱 불러와서 id값이 몇인지 확인 후 +1 하면 어떨까?
+        */
+        var lastIdCheck;
+        db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((결과)=>
+            {
+            결과.forEach((doc)=>{
+                lastIdCheck = doc.data();
+                console.log(lastIdCheck.id);
+            })            
+        }) //이럼 객체 형식으로 데이터가 만들어진다. lastIdCheck의 id값 + 1 로 새 게시글의 id를 지정하자.
+        //글을 로딩할 때에는 마지막 글의 id값을 찾고 5or10만큼씩만 데이터를 가져오면 되겠다.
+
     </script>
 </body>
 </html>
