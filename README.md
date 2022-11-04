@@ -347,3 +347,4 @@ docRef가 그 문서의 이름이다.
 - 게시글을 불러와서 html에 어떻게 뿌려줄지 찾아봐야겠다.
 
 - https://velog.io/@cyongchoi/Firebase-%EB%A1%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0-1 뜬금없지만 로그인유지에 관해.
+- https://velog.io/@zo2kim/%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%9C%A0%EC%A7%80%ED%95%98%EA%B8%B0
