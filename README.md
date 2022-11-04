@@ -351,3 +351,11 @@ docRef가 그 문서의 이름이다.
 - 지금 당장은 내가 구현한 방식이 최선이다. 결론!!!
 
 ## https://velog.io/@js2_11/05-02-Express.js%EC%99%80-REST-API rest api 관련해서 굉장히 잘 정리된 글. 일독하자.
+
+firebase.auth().signOut().then(() => {
+  // Sign-out successful.
+}).catch((error) => {
+  // An error happened.
+});
+
+위는 로그아웃 코드다.
