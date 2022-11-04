@@ -345,3 +345,5 @@ docRef가 그 문서의 이름이다.
 - 날짜 id가 문제 없으면 DB에 사진url, 내용, 날짜, (작성자) 를 넣자.
 - 글 불러오기는 더 골때릴듯. 
 - 게시글을 불러와서 html에 어떻게 뿌려줄지 찾아봐야겠다.
+
+- https://velog.io/@cyongchoi/Firebase-%EB%A1%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0-1 뜬금없지만 로그인유지에 관해.
