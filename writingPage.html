@@ -35,8 +35,10 @@
             <input type="button" id="uploadImageBtn" onclick="uploadImage();" value="이미지 업로드">
             <p>
             <input type="button" value="클릭" onclick="submit();">
+            <img src="" id="myimg">
         </div>
     </div>
+
 
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
@@ -163,6 +165,34 @@
             let 저장할경로 = storageRef.child('profileImage/' + fileName);
             let 업로드작업 = 저장할경로.put(file);
         } //사진을 업로드 하는 방법 클리어. DB에 정보를 연동해서 프로필/게시글에 연결하기. 내가 알기론 게시글 id를 가져오는 쿼리가 있다. 그리고 로딩하면서 가져오기까지가 목표다.
+
+
+        //지금부터는 사진 꺼내오는 법임.
+        var path = 저장할경로.fullPath;//이미지 경로를 알아내는 방법./저장할 경로는 업로드 작업중에 알 수 있다.
+        //그렇다면 글을 업로드 할 때 이미지 경로를 얻을 수 있다. 이미지 이름은 
+
+
+        storageRef.child('profileImage/안녕').getDownloadURL()
+        .then((url) => {
+            // `url` is the download URL for 'images/stars.jpg'
+
+            // This can be downloaded directly:
+            var xhr = new XMLHttpRequest();
+            xhr.responseType = 'blob';
+            xhr.onload = (event) => {
+            var blob = xhr.response;
+            };
+            xhr.open('GET', url);
+            xhr.send();
+
+            // Or inserted into an <img> element
+            var img = document.getElementById('myimg');
+            img.setAttribute('src', url);
+        })
+        .catch((error) => {
+            // Handle any errors
+        }); //이미지를 해당 id dom에 그려준다
+        //사진꺼내오는법
     </script>
     
 </body>
