@@ -27,14 +27,11 @@
         </header>
     
         <div class="writingForm"> 
-            <input type="text" id="title">
+            <textarea id="content" placeholder="내용을 입력해주세요"></textarea>
             <p>
-            <textarea id="content"></textarea>
+            <input type="file" id="uploadImage" accept=".gif, .jpg, .png">
             <p>
-            <input type="file" id="uploadImage">
-            <input type="button" id="uploadImageBtn" onclick="uploadImage();" value="이미지 업로드">
-            <p>
-            <input type="button" value="클릭" onclick="submit();">
+            <input type="button" value="게시" onclick="submit();">
             <img src="" id="myimg">
         </div>
     </div>
@@ -95,18 +92,17 @@
             var day = ('0' + today.getDate()).slice(-2);
  
             var dateString = year + '-' + month  + '-' + day;
-            //let simpleDateString = year + month + day;
+            let simpleDateString = year + month + day;
 
             var hours = ('0' + today.getHours()).slice(-2); 
             var minutes = ('0' + today.getMinutes()).slice(-2);
             var seconds = ('0' + today.getSeconds()).slice(-2); 
 
             var timeString = hours + ':' + minutes  + ':' + seconds;
-            //let simpleTimeString = hours + minutes + seconds;
+            let simpleTimeString = hours + minutes + seconds;
             var dateAndTime = dateString + " " + timeString; //날짜 만드는 함수 새로 만들어야겠네 후..
-            //let id = parseInt(simpleDateString + simpleTimeString);
+            let dateId = parseInt(simpleDateString + simpleTimeString);
 
-            let title = document.getElementById('title').value;
             let content = document.getElementById('content').value;
 
 
@@ -114,6 +110,16 @@
             var lastIdCheck;//document의 내용물을 얻기 위한 과정. object형식으로 반환.
             var lastId; //DB에 저장된 가장 최신글의 feedId값 변수
             var feedId;
+
+            function uploadImage(){
+                let file = document.getElementById('uploadImage').files[0];
+                let 저장할경로 = storageRef.child('feedImage/' + dateId);
+                let 업로드작업 = 저장할경로.put(file);
+            } //사진을 업로드 하는 방법 클리어. DB에 정보를 연동해서 프로필/게시글에 연결하기. 내가 알기론 게시글 id를 가져오는 쿼리가 있다. 그리고 로딩하면서 가져오기까지가 목표다.
+
+            uploadImage();
+
+            let imagePath = storageRef.child('feedImage/' + dateId).fullPath;
 
             db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((결과)=>
                 {
@@ -126,17 +132,17 @@
 
             const submitTheContent = () => {
                 db.collection("게시판").add({
-                    title: title,
                     content: content,
                     timeStamp: dateAndTime,
-                    feedId: feedId
+                    feedId: feedId,
+                    imagelink: imagePath
                 })                //사진 링크도 만들어야함. 
                 .then((docRef) => {
                     console.log("Document written with ID: ", docRef.id);
-                    console.log("제목은 :", title);
                     console.log("내용은 :", content);
                     console.log("시간은 :", dateAndTime);
                     console.log("ID는 :", feedId);
+                    console.log("사진 URL은 :", imagePath);//URL풀 네임을 얻는 게 좀 어렵다...
                 })
                 .catch((error) => {
                     console.error("Error adding document: ", error);
@@ -159,12 +165,7 @@
         //https://codingapple.com/unit/firebase-installation-with-npm/ 참고할것
 
 
-        function uploadImage(){
-            let file = document.getElementById('uploadImage').files[0];
-            let fileName = document.getElementById('title').value;
-            let 저장할경로 = storageRef.child('profileImage/' + fileName);
-            let 업로드작업 = 저장할경로.put(file);
-        } //사진을 업로드 하는 방법 클리어. DB에 정보를 연동해서 프로필/게시글에 연결하기. 내가 알기론 게시글 id를 가져오는 쿼리가 있다. 그리고 로딩하면서 가져오기까지가 목표다.
+        
 
 
         //지금부터는 사진 꺼내오는 법임.
@@ -172,7 +173,7 @@
         //그렇다면 글을 업로드 할 때 이미지 경로를 얻을 수 있다. 이미지 이름은 
 
 
-        storageRef.child('profileImage/안녕').getDownloadURL()
+        storageRef.child('feedImage/안녕').getDownloadURL()
         .then((url) => {
             // `url` is the download URL for 'images/stars.jpg'
 
