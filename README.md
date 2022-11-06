@@ -398,3 +398,5 @@ firebase.auth().signOut().then(() => {
 - -> 가비아는 80포트만 가능하다고 하니 나중에 생각하고
 
 - 로컬 api서버는 219.255.57.35:3300 형태로 운영하자..
+
+# express mysql rest api 앞으로의 검색 키워드이다.
