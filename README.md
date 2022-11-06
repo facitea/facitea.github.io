@@ -401,3 +401,10 @@ firebase.auth().signOut().then(() => {
 - 로컬 api서버는 219.255.57.35:3300 형태로 운영하자..
 
 # express mysql rest api 앞으로의 검색 키워드이다.
+
+api 서버는 사실상
+DB와의 연동을 위해 쓰는 것이다.
+
+- https://hasiki.tistory.com/18
+- mySQL 기본 사용법을 보여준다.
+- 세미콜론을 안 붙이면 말을 안듣는다.
