@@ -111,6 +111,7 @@
         https://www.youtube.com/watch?v=V08wXKHF_Xw-->
 
         <input type="button" id="notYetLogin" value="임시버튼.인증=버튼클릭">
+        <a href="./writingPage.html">글쓰기</a>
     </div>
     <script>
         const notYetLogin = document.getElementById('notYetLogin'); //버튼
@@ -128,6 +129,10 @@
         overlay.addEventListener("click", closeModal); //모달창 자식 배경 누르면 배경 hidden
         closeBtn.addEventListener("click", closeModal); //모달창 닫기 눌러도 배경 hidden
         notYetLogin.addEventListener("click", openModal); //addEventListener를 사용해 클릭하면 hidden class(display: none)을 추가하거나 삭제함
+
+        function writeNewFeed(){
+            window.location.href='../writingPage.html'
+        }
     </script>
 </body>
 </html>
