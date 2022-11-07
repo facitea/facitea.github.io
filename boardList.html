@@ -229,7 +229,27 @@
             //글을 로딩할 때에는 마지막 글의 id값을 찾고 5or10만큼씩만 데이터를 가져오면 되겠다.
             return lastIdCheck; //마지막 게시글 id값을 찾는 내가 만든 메소드.
         }
-        
+
+        db.collection('게시판').where("feedId", ">=", 1)
+        .limit(5)
+        .get().then((결과)=>
+            {
+            결과.forEach((doc)=>{
+                console.log(doc.data());
+                list.push(doc.data());
+            })            
+        }) //피드id로5개씩 가져오기, 실제 적용시 반대차순으로 하기.
+        //테스트자료가 하도 많아서 테스트시 1~5가 안나온다.
+        //가장 마지막 게시글 id 값을 찾아와서 limit(5) --로 읽어내기 ex)99가 마지막이면 99 98 97 96 95 이런 식으로 만들어야한다.
+        db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((결과)=>
+                {
+                결과.forEach((doc)=>{
+                    lastIdCheck = doc.data();//document의 내용물 = doc.data();
+                    lastId = parseInt(lastIdCheck.feedId);//DB에 있는 내가 임의로 지정한 id값은 feedId인데, 그 document의 feedid를 lastId에 담는다는 뜻
+                    feedId = parseInt(lastId);
+                })             
+        })//가장 최근 id찾는 메소드
+        //전역변수로 설정해서 하나씩 읽거나, 지역변수로 하나씩 빼서 써야겠다.
 
     </script>
 </body>
