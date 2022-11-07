@@ -9,19 +9,30 @@
     <link rel="stylesheet" href="myPage.css">
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
     <style>
-        table{
-            border: 1px solid #444444;
-            width: 800px;
+        .feedWrapper{
+            border: 2px solid black;
+            background-color: gray;
         }
-        th, tr, td{
-            border: 1px solid #444444;
+
+        .feedHeader{
+            display: flex;
+            justify-content: space-between;
         }
-        .titleBox{
-            width: 30%;
+        .headerLeft{
+            display: flex;
         }
-        .dateBox{
-            width: 10%;
+        .feedInteraction{
+            display: flex;
+            justify-content: space-between;
         }
+        .feedInteractionDetail{
+            display: flex;
+        }
+        .interactionStatus{
+        
+        }
+
+
 
     </style>
 </head>
@@ -51,63 +62,75 @@
                 </div>
             </nav>
         </header>
-        <table>
-            <tr>
-                <th class="titleBox">제목</th>
-                <th class="contentBox">내용</th>
-                <th class="dateBox">날짜</th>
-            </tr>
-            <tr>
-                <td id="title1"></td>
-                <td id="content1"></td>
-                <td id="date1"></td>
-            </tr>
-            <tr>
-                <td id="title2"></td>
-                <td id="content2"></td>
-                <td id="date3"></td>
-            </tr>
-            <tr>
-                <td id="title3"></td>
-                <td id="content3"></td>
-                <td id="date1"></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </table>
+
+        <div class="feedWrapper">
+            <div class="feedHeader">
+              <div class="headerLeft">
+                <div class="profileImage">프사</div>
+                <div class="userNickname">닉네임</div>
+              </div>
+              
+              <div>
+                <div class="feedSetting">설정</div>
+              </div>
+            </div>
+            
+            <div class="feedImage">메인사진</div>
+            
+            <div class="feedInteraction">
+              <div class="feedInteractionDetail">
+                <div class="iLikeIt">좋아요</div>
+                <div class="wrtComment">댓글</div>
+                <div class="sendToMsg">메시지</div>
+              </div>
+              
+              <div>
+                <div class="bookmark">저장</div>
+              </div>
+            </div>
+            
+            <div class="interactionStatus">
+              <div class="howManyLikey">좋아요 n개</div>
+            </div>
+            
+            <div>
+              <div class="feedText">게시글내용</div>
+            </div>
+          </div>
+          <div class="feedWrapper">
+            <div class="feedHeader">
+              <div class="headerLeft">
+                <div class="profileImage">프사</div>
+                <div class="userNickname">닉네임</div>
+              </div>
+              
+              <div>
+                <div class="feedSetting">설정</div>
+              </div>
+            </div>
+            
+            <div class="feedImage">메인사진</div>
+            
+            <div class="feedInteraction">
+              <div class="feedInteractionDetail">
+                <div class="iLikeIt">좋아요</div>
+                <div class="wrtComment">댓글</div>
+                <div class="sendToMsg">메시지</div>
+              </div>
+              
+              <div>
+                <div class="bookmark">저장</div>
+              </div>
+            </div>
+            
+            <div class="interactionStatus">
+              <div class="howManyLikey">좋아요 n개</div>
+            </div>
+            
+            <div>
+              <div class="feedText">게시글내용</div>
+            </div>
+          </div>
     </div>
     
 
@@ -138,6 +161,7 @@
         }) //순수 데이터를 list 변수에 저장
         */
 
+        /*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
         db.collection('게시판').orderBy("timeStamp", "desc").limit(100).get().then((결과)=>
             {
             결과.forEach((doc)=>{
@@ -145,6 +169,8 @@
                 list.push(doc.data());
             })            
         }) //예를 들어 알파벳순으로 처음 n개 항목을 쿼리하는 방법은 다음과 같습니다. 내림차순으로 정렬은 , orderBy("timeStamp", "desc")
+        ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+        */
         
         /*
         db.collection('게시판').orderBy("id", "desc").startAt(20221102000000).get().then((결과)=>
@@ -202,7 +228,7 @@
         function getYmd10() {
             var d = new Date();
             return d.getFullYear() + ((d.getMonth() + 1) > 9 ? (d.getMonth() + 1).toString() : (d.getMonth() + 1)) + (d.getDate() > 9 ? d.getDate().toString() : "0" + d.getDate().toString());
-        }
+        }//YYYYMMDD
 
         //startAt() 또는 startAfter() 메서드를 사용하여 쿼리의 시작점을 정의합니다.
 
