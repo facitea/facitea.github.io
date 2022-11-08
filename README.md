@@ -435,5 +435,8 @@ DB와의 연동을 위해 쓰는 것이다.
 - Microsoft 서피스 고3 코어i3 10세대 가지고싶다..
 
 ![image](https://user-images.githubusercontent.com/89388117/200442608-d9c42c70-caa2-465b-8d14-26096d4ae000.png)
-- 스냅샷에 대한 
+- 스냅샷에 대한 고찰
+
+![image](https://user-images.githubusercontent.com/89388117/200448000-cba77797-784c-4c31-ad79-ebc18020cd36.png)
+- 함수에 
 
