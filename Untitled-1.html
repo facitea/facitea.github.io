@@ -30,6 +30,15 @@
 <body>
   <div id="wrapper">.</div>
   <input type="button" onclick="run();">
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+  
+  <script src="firebase.js"></script>
+  <script src="auth.js"></script>
+
     <script>
       function run(){
         document.getElementById('wrapper').innerHTML = `
@@ -101,9 +110,57 @@
               <div class="feedText">게시글내용</div>
             </div>
           </div>
+          <div id="wrapper"></div>
         `
       }
       let text = "korea";
+      
+      
+
+      var lastfeedId;
+      async function lastFeedIdCheck(){
+              await db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((결과)=>
+                      {
+                      결과.forEach((doc)=>{
+                          const lastIdCheck = doc.data();//document의 내용물 = doc.data();
+                          const lastId = parseInt(lastIdCheck.feedId);//DB에 있는 내가 임의로 지정한 id값은 feedId인데, 그 document의 feedid를 lastId에 담는다는 뜻
+                          lastfeedId = parseInt(lastId);
+                      })             
+              })//함수로 감싸버리기
+      }
+
+      async function recentFiveFeedData(){
+        await db.collection('게시판').orderBy("timeStamp", "desc").where("feedId", "<=", lastfeedId)
+        .limit(5)
+        .get().then((result)=>
+            {
+            result.forEach((doc)=>{
+                console.log(doc.data());
+                list.push(doc.data());
+            })            
+        })
+      }
+      /*
+      db.collection('게시판').orderBy("feedId").endAt(10)
+      .limit(5)
+      .get().then((결과)=>
+            {
+            결과.forEach((doc)=>{
+                console.log(doc.data());
+                list.push(doc.data());
+            })            
+        })
+      */
+
+      var list = [];
+
+      async function getFeedData(){
+        await lastFeedIdCheck();
+        recentFiveFeedData();
+      }
+      getFeedData();
+
+      
     </script>
 </body>
 </html>
