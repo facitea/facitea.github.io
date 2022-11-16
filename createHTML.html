@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .divTag{
+            color: purple;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div id = "tagArea">
+    </div>
+    <input type="button" value="add_hTag" onclick="create_hTag();">
+    <input type="button" value="add_divTag" onclick="create_divTag();">
+
+    <script>
+        let divTagCount = 1;
+        let hTagCount = 1;
+        function create_divTag(){
+            let tagArea = document.getElementById('tagArea');
+            let new_divTag = document.createElement('div');
+            
+            new_divTag.setAttribute('class', 'divTag');
+            new_divTag.innerHTML = divTagCount+". 추가된 div태그";
+            
+            tagArea.appendChild(new_divTag);
+            
+            divTagCount++;
+        }
+        function create_hTag(){
+            let tagArea = document.getElementById('tagArea');
+            let new_hTag = document.createElement('h'+hTagCount);
+            
+            new_hTag.innerHTML = "추가된 h"+hTagCount+"태그";
+            
+            tagArea.appendChild(new_hTag);
+        
+        if(hTagCount < 6)
+            hTagCount++;
+        }
+        function createNewFeed(){
+            let 
+        }
+    </script>
+</body>
+</html>
