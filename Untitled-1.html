@@ -65,6 +65,10 @@
     <div>
       <div class="feedText" id="1ContentValue">게시글내용</div>
     </div>
+
+    <div>
+      <div class="createdDate">날짜</div>
+    </div>
   </div>
 
   <div class="feedWrapper">
@@ -100,6 +104,10 @@
     <div>
       <div class="feedText" id="2ContentValue">게시글내용</div>
     </div>
+
+    <div>
+      <div class="createdDate">날짜</div>
+    </div>
   </div>
   <div class="feedWrapper">
     <div class="feedHeader">
@@ -133,6 +141,10 @@
     
     <div>
       <div class="feedText" id="3ContentValue">게시글내용</div>
+    </div>
+
+    <div>
+      <div class="createdDate">날짜</div>
     </div>
   </div>
   <div class="feedWrapper">
@@ -168,6 +180,10 @@
     <div>
       <div class="feedText" id="4ContentValue">게시글내용</div>
     </div>
+
+    <div>
+      <div class="createdDate">날짜</div>
+    </div>
   </div>
   <div class="feedWrapper">
     <div class="feedHeader">
@@ -177,7 +193,7 @@
       </div>
       
       <div>
-        <div class="feedSetting">설정</div>
+        <div class="createdDate">날짜</div>
       </div>
     </div>
     
@@ -202,6 +218,10 @@
     <div>
       <div class="feedText" id="5ContentValue">게시글내용</div>
     </div>
+
+    <div>
+      <div class="createdDate">날짜</div>
+    </div>
   </div>
 
 
@@ -218,15 +238,15 @@
   <script src="auth.js"></script>
 
     <script>
+      let sival = "hello world";
       
-      
-
+      //아래 함수는 버튼 누르면 나타나는 함수
       function run(){
         document.getElementById('wrapper').innerHTML = `
         <div class="feedWrapper">
             <div class="feedHeader">
               <div class="headerLeft">
-                <div class="profileImage">프사</div>
+                <div class="profileImage">프사${sival}</div>
                 <div class="userNickname">닉네임</div>
               </div>
               
@@ -255,6 +275,10 @@
             
             <div>
               <div class="feedText">게시글내용</div>
+            </div>
+
+            <div>
+              <div class="createdDate">날짜</div>
             </div>
           </div>
           <div class="feedWrapper">
@@ -289,6 +313,9 @@
             
             <div>
               <div class="feedText">게시글내용</div>
+            </div>
+            <div>
+              <div class="createdDate">날짜</div>
             </div>
           </div>
           <div id="wrapper"></div>
