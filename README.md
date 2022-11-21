@@ -528,3 +528,8 @@ DB 구조에 신경써야한다.
 ★생각해볼점★
 - 왜 feed에서 닉네임만 세로 정렬 될까. 폭이 제한돼서 그럴까?
 - 굳이 headerLeft를 flex 처리할 필요는 없는 것 같다.
+
+# 22/11/22
+- https://codesandbox.io/s/react-new
+- https://codedamn.com/online-compiler/reactjs
+- 두가지 온라인 컴파일러가 있다. 아이패드로 코딩시 한번 참고해보자.
