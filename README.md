@@ -532,4 +532,8 @@ DB 구조에 신경써야한다.
 # 22/11/22
 - https://codesandbox.io/s/react-new
 - https://codedamn.com/online-compiler/reactjs
-- 두가지 온라인 컴파일러가 있다. 아이패드로 코딩시 한번 참고해보자.
+- repl.it
+- 세가지 온라인 컴파일러가 있다. 아이패드로 코딩시 한번 참고해보자.
+
+- https://react.vlpt.us/basic/07-useState.html
+- 리액트 공부 참고 자료
