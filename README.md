@@ -537,3 +537,6 @@ DB 구조에 신경써야한다.
 
 - https://react.vlpt.us/basic/07-useState.html
 - 리액트 공부 참고 자료
+
+- 확실히 백엔드에 더욱 관심이 많은 것 같다. 늘 데이터만 다루려고 하고. 마크업에 소홀해진다..
+- https://any-ting.tistory.com/14 // node API서버
