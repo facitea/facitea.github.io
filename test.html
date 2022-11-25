@@ -7,92 +7,162 @@
     <title>Document</title>
 </head>
 <body>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+    <div id="feedWrapper"></div>
     <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyDIrOivTKOIFNFygWPaj08Y6xZIcpmDIX8",
-            authDomain: "gbsb-16933.firebaseapp.com",
-            projectId: "gbsb-16933",
-            storageBucket: "gbsb-16933.appspot.com",
-            messagingSenderId: "581180610741",
-            appId: "1:581180610741:web:62cb4af9be3af30d46c6fc"
-        };
+        const newContent = (profileImage1, userNickname1, feedImage1, howManyLikey1, feedText1, createdDate1) => {
+            let feedWrapper = document.createElement('div');
+            feedWrapper.className = 'feedWrapper';
+            feedWrapper.id = 'feedWrapper';
+            //comment란이 없다. 이것은 명백한 실수다. 추후에 넣자.
+            let feedContentBox = document.createElement('div');
+            feedContentBox.className = 'feedContentBox';
+            feedContentBox.id = 'feedContentBox';
 
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-        
-        /*
-        db.collection("게시판").add({
-            title: "Ada",
-            content: "Lovelace",
-            date: 1815
-        })
-        .then((docRef) => {
-            console.log("Document written with ID: ", docRef.id);
-        })
-        .catch((error) => {
-            console.error("Error adding document: ", error);
-        });
-        */
- 
+            let feedHeader = document.createElement('div');
+            feedHeader.className = 'feedHeader';
+            feedHeader.id = 'feedHeader';
+
+            let headerLeft = document.createElement('div');
+            headerLeft.className = 'headerLeft';
+            headerLeft.id = 'headerLeft';
+
+            let profileImageCircle = document.createElement('div');
+            profileImageCircle.className = 'profileImageCircle';
+            profileImageCircle.id = 'profileImageCircle';
+
+            let profileImage = document.createElement('div');
+            profileImage.className = 'profileImage';
+            profileImage.id = 'profileImage';
+
+            let userNickname = document.createElement('div');
+            userNickname.className = 'userNickname';
+            userNickname.id = 'userNickname';
+
+            let feedSetting = document.createElement('div');
+            feedSetting.className = 'feedSetting';
+            feedSetting.id = 'feedSetting';
+
+            let feedImageBox = document.createElement('div');
+            feedImageBox.className = 'feedImageBox';
+            feedImageBox.id = 'feedImageBox';
+
+            let feedImage = document.createElement('div');
+            feedImage.className = 'feedImage';
+            feedImage.id = 'feedImage';
+
+            let feedInteraction = document.createElement('div');
+            feedInteraction.className = 'feedInteraction';
+            feedInteraction.id = 'feedInteraction';
+
+            let feedInteractionDetail = document.createElement('div');
+            feedInteractionDetail.className = 'feedInteractionDetail';
+            feedInteractionDetail.id = 'feedInteractionDetail';
+
+            let iLikeIt = document.createElement('div');
+            iLikeIt.className = 'iLikeIt';
+            iLikeIt.id = 'iLikeIt';
+
+            let wrtComment = document.createElement('div');
+            wrtComment.className = 'wrtComment';
+            wrtComment.id = 'wrtComment';
+
+            let sendMsg = document.createElement('div');
+            sendMsg.className = 'sendMsg';
+            sendMsg.id = 'sendMsg';
+
+            let bookmark = document.createElement('div');
+            bookmark.className = 'bookmark';
+            bookmark.id = 'bookmark';
+
+            let interactionStatus = document.createElement('div');
+            interactionStatus.className = 'interactionStatus';
+            interactionStatus.id = 'interactionStatus';
+
+            let howManyLikey = document.createElement('div');
+            howManyLikey.className = 'howManyLikey';
+            howManyLikey.id = 'howManyLikey';
+
+            let feedText = document.createElement('div');
+            feedText.className = 'feedText';
+            feedText.id = 'feedText';
+
+            let createdDate = document.createElement('div');
+            createdDate.className = 'createdDate';
+            createdDate.id = 'createdDate';
             
+            let settingBox = document.createElement('div');
+            settingBox.className = 'settingBox';
+            settingBox.id = 'settingBox';
 
-        
+            let bookmarkBox = document.createElement('div');
+            bookmarkBox.className = 'bookmarkBox';
+            bookmarkBox.id = 'bookmarkBox';
 
-        function submit(){
-            var today = new Date();
+            let feedTextBox = document.createElement('div');
+            feedTextBox.className = 'feedTextBox';
+            feedTextBox.id = 'feedTextBox';
 
-            var year = today.getFullYear();
-            var month = ('0' + (today.getMonth() + 1)).slice(-2);
-            var day = ('0' + today.getDate()).slice(-2);
+            let createdDateBox = document.createElement('div');
+            createdDateBox.className = 'createdDateBox';
+            createdDateBox.id = 'createdDateBox';
 
-            var dateString = year + '-' + month  + '-' + day;
+            let commentBox = document.createElement('div');
+            commentBox.className = 'commentBox';
+            commentBox.id = 'commentBox';
 
-            var hours = ('0' + today.getHours()).slice(-2); 
-            var minutes = ('0' + today.getMinutes()).slice(-2);
-            var seconds = ('0' + today.getSeconds()).slice(-2); 
+            let comment = document.createElement('div');
+            comment.className = 'comment';
+            comment.id = 'comment';
 
-            var timeString = hours + ':' + minutes  + ':' + seconds;
-            var dateAndTime = dateString + " " + timeString; //날짜 만드는 함수 새로 만들어야겠네 후..
+            let img = document.createElement('img');
+            img.className = 'profileImage';
+            img.id = 'profileImage';
 
+            let div = document.createElement('div');
 
-            let title = document.getElementById('title').value;
-            let content = document.getElementById('content').value;
+            document.getElementById('feedWrapper').appendChild(feedContentBox);
+            document.getElementById('feedContentBox').appendChild(feedHeader);
+            document.getElementById('feedHeader').appendChild(headerLeft);
+            document.getElementById('headerLeft').appendChild(profileImageCircle);
+            document.getElementById('profileImageCircle').appendChild(img);
+            document.getElementById('headerLeft').appendChild(userNickname);
+            document.getElementById('feedHeader').appendChild(settingBox);
+            document.getElementById('settingBox').appendChild(feedSetting);
 
-            db.collection("게시판").add({
-                title: title,
-                content: content,
-                date: dateAndTime
-            })
-            .then((docRef) => {
-                console.log("Document written with ID: ", docRef.id);
-            })
-            .catch((error) => {
-                console.error("Error adding document: ", error);
-            });
+            document.getElementById('feedContentBox').appendChild(feedImageBox);
+            document.getElementById('feedImageBox').appendChild(feedImage);
+            document.getElementById('feedContentBox').appendChild(feedInteraction);
+            document.getElementById('feedInteraction').appendChild(feedInteractionDetail);
+            document.getElementById('feedInteractionDetail').appendChild(iLikeIt);
+            document.getElementById('feedInteractionDetail').appendChild(wrtComment);
+            document.getElementById('feedInteractionDetail').appendChild(sendMsg);
+            document.getElementById('feedInteraction').appendChild(bookmarkBox);
+            document.getElementById('bookmarkBox').appendChild(bookmark);
+
+            document.getElementById('feedContentBox').appendChild(interactionStatus);
+            document.getElementById('interactionStatus').appendChild(howManyLikey);
+
+            document.getElementById('feedContentBox').appendChild(feedTextBox);
+            document.getElementById('feedTextBox').appendChild(feedText);
+            
+            document.getElementById('feedContentBox').appendChild(createdDateBox);
+            document.getElementById('createdDateBox').appendChild(createdDate);
+
+            document.getElementById('feedContentBox').appendChild(commentBox);
+            document.getElementById('commentBox').appendChild(comment);
+
+            // profileImageCircle.append('3'); 이렇게 하면 html 태그 내부(innerHTML)이 아닌 태그 밖에 3이 들어가서 전혀 적절하지 않다.
+            //document.getElementById('comment').innerHTML = "반가워요?"; innerHTML을 사용해야 해당 태그 사이에 내용이 들어간다.
+            //a링크 또는 
+
+            //지금까지 노가다로 접근을 잘해왔다. 쳣번째 목표인 동적으로 HTML 생성하기는 절반정도 완료됐다.
+            //앞으로 해야할 것은 서버로부터 받아온 data를 어떻게 바인딩할 것인지 고민해야한다.
+            //append, innerHTML만으로 이것이 가능할까?
+
+            //https://velog.io/@dnjswn123/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A1%9C-%EC%9A%94%EC%86%8C-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0-createElement-appendChild
+            //위 링크를 보면 src도 동적으로 삽입가능하다.
         }
-
-        
-
-
-
-        
-        
-        //https://firebase.google.com/docs/firestore/quickstart#web-version-8 주소 나온대로 치면 다 된다.
-        //https://codingapple.com/unit/firebase-installation-with-npm/ 참고할것
+    
     </script>
-
-    
-
-    <input type="text" id="title">
-    <p>
-    <textarea id="content"></textarea>
-    <p>
-    <input type="button" value="클릭" onclick="submit();">
-    
 </body>
 </html>
