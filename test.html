@@ -5,8 +5,69 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="title.css">
+    <style>
+        .feedContentBox{
+            border: 2px solid black;
+            background-color: gray;
+        }
+
+        .feedHeader{
+            display: flex;
+            justify-content: space-between;
+        }
+        .headerLeft{
+            display: flex;
+        }
+        .feedInteraction{
+            display: flex;
+            justify-content: space-between;
+        }
+        .feedInteractionDetail{
+            display: flex;
+        }
+
+        .profileImageCircle{
+            width: 20px;
+            height: 20px;
+            border-radius: 30%;
+            overflow: hidden; /*깎고 넘치는 부분을 안보이게 하기*/
+        }
+        .profileImage{
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+
+    <script src="firebase.js"></script>
+    <!--auth는 추후 삽입하자-->
+
+    <header>
+        <nav>
+            <div class="navLeftSide">
+                <h1><a href="/index.html">Animall</a></h1>
+            </div>
+            <div class="navRightSide">
+                <ul>
+                    <li class="navFlexItem"><a href="./boardList.html">Board</a></li>
+                    <li class="navFlexItem"><a href="./index.html">Training</a></li>
+                    <li class="navFlexItem"><a href="./index.html">Shop</a></li>
+                    <li class="navFlexItem"><a href="./index.html">Trip</a></li>
+                    <li class="navFlexItem"><a href="./myPage.html">Me</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
     <div id="feedWrapper"></div>
     <script>
         const newContent = (profileImage1, userNickname1, feedImage1, howManyLikey1, feedText1, createdDate1) => {
@@ -162,6 +223,81 @@
             //https://velog.io/@dnjswn123/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A1%9C-%EC%9A%94%EC%86%8C-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0-createElement-appendChild
             //위 링크를 보면 src도 동적으로 삽입가능하다.
         }
+
+        // 22/12/4 기준 imageUrl, userId, feedImage, feedContext, writtenDate 위 5개 항목을 가져와서 동적 할당해야함.
+        // userId에 a태그가 삽입돼서 user 정보를 볼 수 있도록 조치를 취해야 한다. 아니면 모달창으로 user 정보를 보여줘도 된다.
+        // querystring을 통해 user 값을 주소로 넘겨서 가져오면 좋겠지만 api 서버가 없으므로 해당 방법은 아직 구현이 어렵다.
+
+        //처음엔 newContent(); 메소드로 첫 5개 게시글을 만들어 내고
+        //그 이후로는 새로운 메소드를 만들어서 (id값을 같게하면 기존의 것에 추가되므로 새롭게 만들어야한다) 이미 만들어진 5개 태그 꼬리에 덧붙여지게 만들어야겠다.
+
+        var lastfeedId;
+            async function lastFeedIdCheck() {
+                await db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((결과) => {
+                    결과.forEach((doc) => {
+                        const lastIdCheck = doc.data();//document의 내용물 = doc.data();
+                        const lastId = parseInt(lastIdCheck.feedId);//DB에 있는 내가 임의로 지정한 id값은 feedId인데, 그 document의 feedid를 lastId에 담는다는 뜻
+                        lastfeedId = parseInt(lastId);
+                    })
+                })//함수로 감싸버리기
+            }
+
+            async function recentFiveFeedData() {
+                await db.collection('게시판').orderBy("feedId", "desc").where("feedId", "<=", lastfeedId)
+                    .limit(5)
+                    .get().then((result) => {
+                        result.forEach((doc) => {
+                            //console.log(doc.data());
+                            list.push(doc.data());
+                        })
+                    })
+            }
+
+
+            var list = [];
+
+            async function getFeedData() {
+                await lastFeedIdCheck();
+                await recentFiveFeedData();
+
+
+
+                document.getElementById('1ContentValue').innerHTML = list[0].content;
+                document.getElementById('2ContentValue').innerHTML = list[1].content;
+                document.getElementById('3ContentValue').innerHTML = list[2].content;
+                document.getElementById('4ContentValue').innerHTML = list[3].content;
+                document.getElementById('5ContentValue').innerHTML = list[4].content;
+
+
+                list = [];
+            }
+            getFeedData();//첫 로딩만 이걸로 시행, 이미 존재하는 피드 html 구조에 뿌려주는 것.
+
+            async function loadNextFiveFeedData() {
+                await db.collection('게시판').orderBy("feedId", "desc").where("feedId", "<=", lastfeedId)
+                    .limit(5)
+                    .get().then((result) => {
+                        result.forEach((doc) => {
+                            //console.log(doc.data());
+                            list.push(doc.data());
+                        })
+                    })
+            }
+
+            async function getNextFeedData() {
+                lastfeedId = parseInt(lastfeedId - 5);
+                await recentFiveFeedData();
+
+                for (i = 0; i < 5; i++) {
+                    console.log(list[i]);//이 자리에 list 배열 뽑는 코드를 넣어야함
+                }
+
+                list = [];
+            }//이 함수를 실행할 때마다 아직 불러오지 않은 5개의 근래 게시물을 가져온다.
+            //이 함수 안에 createElement하는 요소들을 넣어서 동적으로 구현해야겠다.
+            //그러려면 element의 id로 feedId 고유값을 품고 있는게 좋겠다. feedId 25인 경우 해당 태그의 id도 25로 구성하는 것.
+            //그럼 div element마다 고유한 id값을 가진다. class값은 모두 공유돼서 css도 뭉개지지 않는다.
+            //새로 5개를 더 불러와도 innerHTML을 설정하는 과정에서 id값이 중복되지 않아 글 내용이 중복되거나 뭉개지지 않는다.
     
     </script>
 </body>
