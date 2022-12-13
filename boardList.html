@@ -75,6 +75,8 @@
             </nav>
         </header>
 
+
+        <input type="button" onclick="run()" value="게시글 가져오기">
         <div class="feedWrapper" id="feedWrapper">
             <div class="feedContentBox">
                 <div class="feedHeader">
@@ -155,7 +157,7 @@
                     <div class="createdDate">날짜</div>
                 </div>
             </div>
-            <div id="moreContent"></div>
+            <div id="newSection0"></div>
         </div>
 
 
@@ -331,10 +333,15 @@
             })            
         })
         */
-
         //백틱으로 해도 appendChild를 사용해야할것같다
+
+        var sectionCount = 0;
+        var sectionCountName = 'newSection';
+        var sectionCountId;
+
         function run(){// moreContent 위에 백틱 코드가 생성된다.
-            document.getElementById('moreContent').innerHTML = `
+            sectionCountId = String('newSection' + sectionCount);
+            document.getElementById(sectionCountId).innerHTML = `
             <div class="feedContentBox">
                 <div class="feedHeader">
                 <div class="headerLeft">
@@ -414,10 +421,132 @@
                     <div class="createdDate">날짜</div>
                 </div>
             </div>
-            `
-      }
-        
 
+            <div class="feedContentBox">
+                <div class="feedHeader">
+                    <div class="headerLeft">
+                    <div class="profileImageCircle">
+                        <img class="profileImage" src="msk.png" alt="일론머스크">
+                    </div>
+                    <div class="userNickname">닉네임</div>
+                    </div>
+                    
+                    <div>
+                    <div class="feedSetting">설정</div>
+                    </div>
+                </div>
+                
+                <div class="feedImage">메인사진</div>
+                
+                <div class="feedInteraction">
+                    <div class="feedInteractionDetail">
+                    <div class="iLikeIt">좋아요</div>
+                    <div class="wrtComment">댓글</div>
+                    <div class="sendToMsg">메시지</div>
+                    </div>
+                    
+                    <div>
+                    <div class="bookmark">저장</div>
+                    </div>
+                </div>
+                
+                <div class="interactionStatus">
+                    <div class="howManyLikey">좋아요 n개</div>
+                </div>
+                
+                <div>
+                    <div class="feedText">게시글내용</div>
+                </div>
+                <div>
+                    <div class="createdDate">날짜</div>
+                </div>
+            </div>
+
+            <div class="feedContentBox">
+                <div class="feedHeader">
+                    <div class="headerLeft">
+                    <div class="profileImageCircle">
+                        <img class="profileImage" src="msk.png" alt="일론머스크">
+                    </div>
+                    <div class="userNickname">닉네임</div>
+                    </div>
+                    
+                    <div>
+                    <div class="feedSetting">설정</div>
+                    </div>
+                </div>
+                
+                <div class="feedImage">메인사진</div>
+                
+                <div class="feedInteraction">
+                    <div class="feedInteractionDetail">
+                    <div class="iLikeIt">좋아요</div>
+                    <div class="wrtComment">댓글</div>
+                    <div class="sendToMsg">메시지</div>
+                    </div>
+                    
+                    <div>
+                    <div class="bookmark">저장</div>
+                    </div>
+                </div>
+                
+                <div class="interactionStatus">
+                    <div class="howManyLikey">좋아요 n개</div>
+                </div>
+                
+                <div>
+                    <div class="feedText">게시글내용</div>
+                </div>
+                <div>
+                    <div class="createdDate">날짜</div>
+                </div>
+            </div>
+
+            <div class="feedContentBox">
+                <div class="feedHeader">
+                    <div class="headerLeft">
+                    <div class="profileImageCircle">
+                        <img class="profileImage" src="msk.png" alt="일론머스크">
+                    </div>
+                    <div class="userNickname">닉네임</div>
+                    </div>
+                    
+                    <div>
+                    <div class="feedSetting">설정</div>
+                    </div>
+                </div>
+                
+                <div class="feedImage">메인사진</div>
+                
+                <div class="feedInteraction">
+                    <div class="feedInteractionDetail">
+                    <div class="iLikeIt">좋아요</div>
+                    <div class="wrtComment">댓글</div>
+                    <div class="sendToMsg">메시지</div>
+                    </div>
+                    
+                    <div>
+                    <div class="bookmark">저장</div>
+                    </div>
+                </div>
+                
+                <div class="interactionStatus">
+                    <div class="howManyLikey">좋아요 n개</div>
+                </div>
+                
+                <div>
+                    <div class="feedText">게시글내용</div>
+                </div>
+                <div>
+                    <div class="createdDate">날짜</div>
+                </div>
+            </div>
+            <div id="${sectionCountName + parseInt(sectionCount + 1)}"></div>
+            `
+            sectionCount = sectionCount + 1;
+            // 내 능력의 한계로 새로운 게시글은 0 자식요소 1 자식요소 2 자식요소 3 같은 계단식으로 구성했다.
+            //sectionCount Name Id 등은 이를 표현하기 위한 변수이다.
+      }
     </script>
 </body>
 </html>
