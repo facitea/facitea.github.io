@@ -560,3 +560,4 @@ https://travelerfootprint.tistory.com/135
 - 하다님의 조언은 createElement, innerHTML은 상황에 따라 사용하라는 것. 조언을 따라 백틱을 이용하여 html 요소를 자식요소로 무한대로 추가하게 만들었다.
 
 - 앞으로 해야할 것은 무한스크롤 + 데이터 바인딩이다.
+- 인터섹션 옵저버에 대해서 공부해보자.
