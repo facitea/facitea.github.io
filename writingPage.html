@@ -81,10 +81,6 @@
         var feedId;
 
         function submit(){
-            async ()=>{
-
-            }
-
             var today = new Date();
 
             var year = today.getFullYear();
@@ -103,7 +99,7 @@
             var dateAndTime = dateString + " " + timeString; //날짜 만드는 함수 새로 만들어야겠네 후..
             let dateId = parseInt(simpleDateString + simpleTimeString);
 
-            let content = document.getElementById('content').value;
+            let content = document.getElementById('content').value;//게시글 내용
 
 
            // await lastIdCheckFunc();
@@ -130,26 +126,39 @@
                 })             
             })
 
+            const user = firebase.auth().currentUser;
+
+            const displayName = user.displayName;
+            const email = user.email;
+            const photoURL = user.photoURL;
+            const emailVerified = user.emailVerified;
+
+            const uid = user.uid;
+
             const submitTheContent = () => {
                 db.collection("게시판").add({
                     content: content,
                     timeStamp: dateAndTime,
                     feedId: feedId,
-                    imagelink: imagePath
-                })                //사진 링크도 만들어야함. 
+                    imagelink: imagePath,
+                    writerId: uid,
+                    writerNickname: displayName,
+                })
                 .then((docRef) => {
                     console.log("Document written with ID: ", docRef.id);
                     console.log("내용은 :", content);
                     console.log("시간은 :", dateAndTime);
                     console.log("ID는 :", feedId);
-                    console.log("사진 URL은 :", imagePath);//URL풀 네임을 얻는 게 좀 어렵다...
+                    console.log("사진 URL은 :", imagePath);
+                    console.log("작성자 ID는 :", uid);
+                    console.log("작성자 닉네임은 :", displayName);//생각해보니 작성자 페이지 url을 넘겨줘도 되겠다.
                 })
                 .catch((error) => {
                     console.error("Error adding document: ", error);
-                })
+                })  
             }
 
-            setTimeout(submitTheContent, 3000); //비
+            setTimeout(submitTheContent, 3000); //임시로 비동시 처리. 3000s 후 submitcontent 실행
 
             
         } // timestamp는 고정하고, 만약 그것이 수정된다면 새로운 timestamp 테이블에 담아야겠다.
