@@ -582,3 +582,36 @@ https://travelerfootprint.tistory.com/135
 
 # 로그인을 해야만 글이 써진다. 글이 안써지면 경고창을 내어야 할 듯. 글 작성 눌렀을 때 응답이 안와도 경고창을 내자.
 # 사진이 없으면 imageUrl을 null 처리 하자.
+
+# 22/12/15
+- 닉네임 *id="userNickname4"
+- 메인사진 *id="feedImage4"
+- 게시글 내용 *id="feedText4"
+- 날짜 *id="createdDate4"
+
+img태그에 id값까지는 잘 뿌려주는데 이미지를 못올린다.
+만약 서버에서 image가 없어서 오류가 나는 거라면 
+업로드 시 사진이 없을 때에 자동으로 해당 값을 뽀리 사진 link로 불러오게 하자.
+일단 일이 너무 커지니 DB초기화는 다음에 하도록 하자.
+image가 없거나 사진이 아니면 못올리게 하는 로직구현이 내일 할 것.
+
+다음 코드는 디버깅을 위해 list 배열을 만드는 코드다.
+
+db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((결과)=>
+                      {
+                      결과.forEach((doc)=>{
+                          const lastIdCheck = doc.data();//document의 내용물 = doc.data();
+                          const lastId = parseInt(lastIdCheck.feedId);//DB에 있는 내가 임의로 지정한 id값은 feedId인데, 그 document의 feedid를 lastId에 담는다는 뜻
+                          lastfeedId = parseInt(lastId);
+                      })             
+              })
+
+db.collection('게시판').orderBy("feedId", "desc").where("feedId", "<=", lastfeedId)
+        .limit(5)
+        .get().then((result)=>
+            {
+            result.forEach((doc)=>{
+                //console.log(doc.data());
+                list.push(doc.data());
+            })            
+        })
