@@ -509,6 +509,7 @@
         var img;
         var imageLinkArr = [];
         var j;
+        var testArr = [];
 
         for(i=0; i<5; i++){
             imageLinkArr.push(list[i].imagelink);
@@ -534,8 +535,11 @@
                         // Or inserted into an <img> element ->이 방법으로 써야한다.
                     img.setAttribute('src', url); 
 
+                    testArr.push(url);
+
                     console.log(idStringFinal);
                     console.log(img);
+                    console.log(testArr);//tsetArr로 뽑은 url을 dom으로 넘기면 될듯
                     })
                     .catch((error) => {
                         console.log("이미지를 불러오는 중 오류가 발생했습니다.")
@@ -545,6 +549,8 @@
                     //위 코드는 html요소에 src를 넣는 것이기 때문에 img태그로 바꾸면 해결된다.
                 }      
             }
+
+            b();
 
 
         //img태그에 id값까지는 잘 뿌려주는데 이미지를 못올린다.
