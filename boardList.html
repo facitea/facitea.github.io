@@ -504,43 +504,49 @@
 
         //★★반복문이 다 돌아가버리고 마지막 숫자만 j로 대입된다.
 
+        var feedImageNum;
+        var idStringFinal;
+        var img;
+        var imageLinkArr = [];
+        var j;
+
         for(i=0; i<5; i++){
-            var j;
-            var feedImageNum;
-            var idStringFinal;
-            var img;
-
-            function a(){
-                j = String(list[i].imagelink);
-                feedImageNum = i;
-                idStringFinal = String("feedImage" + feedImageNum);
-                img = document.getElementById(idStringFinal);
-                console.log(j);
-                console.log(idStringFinal);
-                console.log(img);
-            }
-
-            function b(){
-                storageRef.child(j).getDownloadURL()
-                .then((url) => {
-                    // Or inserted into an <img> element ->이 방법으로 써야한다.
-                img.setAttribute('src', url); 
-                console.log(j);
-                console.log(idStringFinal);
-                console.log(img);
-                })
-                .catch((error) => {
-                    console.log("이미지를 불러오는 중 오류가 발생했습니다.")
-                    // Handle any errors
-                }); //이미지를 해당 id dom에 그려준다
-                //사진꺼내오는법
-                //위 코드는 html요소에 src를 넣는 것이기 때문에 img태그로 바꾸면 해결된다.
-            }
-
-            setTimeout(a(), 600);
-            setTimeout(b(), 600);
-
+            imageLinkArr.push(list[i].imagelink);
         }
+
+        //반복문내에서 함수를 돌리기 전에 변수를 지정해서  list[i].imagelink 값을 넣어서 함수에 넣기
+            
+            function b(){
+                for(i=0; i<5; i++){
+                    feedImageNum = i;
+                    idStringFinal = String("feedImage" + feedImageNum);
+                    img = document.getElementById(idStringFinal);
+
+
+                    console.log(idStringFinal);
+                    console.log(img);
+
+                    j = imageLinkArr[i];
+
+
+                    storageRef.child(j).getDownloadURL()
+                    .then((url) => {
+                        // Or inserted into an <img> element ->이 방법으로 써야한다.
+                    img.setAttribute('src', url); 
+
+                    console.log(idStringFinal);
+                    console.log(img);
+                    })
+                    .catch((error) => {
+                        console.log("이미지를 불러오는 중 오류가 발생했습니다.")
+                        // Handle any errors
+                    }); //이미지를 해당 id dom에 그려준다
+                    //사진꺼내오는법
+                    //위 코드는 html요소에 src를 넣는 것이기 때문에 img태그로 바꾸면 해결된다.
+                }      
+            }
+
+
         //img태그에 id값까지는 잘 뿌려주는데 이미지를 못올린다.
                 //만약 서버에서 image가 없어서 오류가 나는 거라면 
                 //업로드 시 사진이 없을 때에 자동으로 해당 값을 뽀리 사진 link로 불러오게 하자.
