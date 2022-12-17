@@ -511,35 +511,23 @@
         var j;
         var testArr = [];
 
-        for(i=0; i<5; i++){
-            imageLinkArr.push(list[i].imagelink);
-        }
+        
 
         //반복문내에서 함수를 돌리기 전에 변수를 지정해서  list[i].imagelink 값을 넣어서 함수에 넣기
             
-            function b(){
+            async function getFullFeedImageUrl(){
                 for(i=0; i<5; i++){
-                    feedImageNum = i;
-                    idStringFinal = String("feedImage" + feedImageNum);
-                    img = document.getElementById(idStringFinal);
+                    imageLinkArr.push(list[i].imagelink);
+                }
 
+                for(i=0; i<5; i++){
+                    j = imageLinkArr[i];//각 간략화된 주소를 j에 담는다.->j를 child의 매개변수로 넣는다.
 
-                    console.log(idStringFinal);
-                    console.log(img);
-
-                    j = imageLinkArr[i];
-
-
-                    storageRef.child(j).getDownloadURL()
+                    await storageRef.child(j).getDownloadURL()
                     .then((url) => {
                         // Or inserted into an <img> element ->이 방법으로 써야한다.
-                    img.setAttribute('src', url); 
-
-                    testArr.push(url);
-
-                    console.log(idStringFinal);
-                    console.log(img);
-                    console.log(testArr);//tsetArr로 뽑은 url을 dom으로 넘기면 될듯
+                
+                    testArr.push(url);//firebase 메소드를 통해 testArr에 풀 주소를 담았다.
                     })
                     .catch((error) => {
                         console.log("이미지를 불러오는 중 오류가 발생했습니다.")
@@ -550,7 +538,23 @@
                 }      
             }
 
-            b();
+        async function setFirstLoadFeedImage(){
+            for(i=0; i<5; i++){
+                feedImageNum = i;
+                idStringFinal = String("feedImage" + feedImageNum);
+                img = document.getElementById(idStringFinal);
+                img.setAttribute('src', testArr[i]);
+            }
+        }
+
+        async function FirstLoadFeedImageRun(){
+            await getFullFeedImageUrl();
+            setFirstLoadFeedImage();
+        }
+
+        FirstLoadFeedImageRun();
+        
+        
 
 
         //img태그에 id값까지는 잘 뿌려주는데 이미지를 못올린다.
@@ -563,6 +567,7 @@
           
         list = [];
       }
+
       getFeedData();//첫 로딩만 이걸로 시행
 
       async function loadNextFiveFeedData(){
