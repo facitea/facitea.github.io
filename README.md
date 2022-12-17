@@ -615,3 +615,11 @@ db.collection('게시판').orderBy("feedId", "desc").where("feedId", "<=", lastf
                 list.push(doc.data());
             })            
         })
+        
+        
+       
+# 22/12/17
+- debugger; 를 사용하면 break 포인트가 잡혀 디버깅하기 쉬워진다.
+- 며칠 간 게시글 이미지를 띄우는 작업을 하였다.
+- 파이어베이스 비동기처리, 날 것의 데이터를 사용하지 않고 정제하여 사용하기를 배울 수 있는 경험이었다.
+- map, filter 등을 공부해야겠다. 친구가 push를 지양하라는 조언을 주었다.
