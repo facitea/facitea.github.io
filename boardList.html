@@ -479,14 +479,12 @@
                     .limit(5)
                     .get().then((result) => {
                         result.forEach((doc) => {
-                            //console.log(doc.data());
                             list.push(doc.data());
                         })
                     })
             }
-
-
-            var list = [];
+            
+            //var list = [];
 
             async function getFeedData() {
                 await lastFeedIdCheck();
@@ -805,7 +803,6 @@
                         .limit(5)
                         .get().then((result) => {
                             result.forEach((doc) => {
-                                //console.log(doc.data());
                                 list.push(doc.data());
                             })
                         })
@@ -818,7 +815,7 @@
                     const createdDate = "createdDate";
 
                     await recentFiveFeedData();
-
+                    console.log(list);
 
                     document.getElementById(userNickname + moreSectionCount).innerHTML = list[0].writerNickname;
                     document.getElementById(userNickname + (moreSectionCount + 1)).innerHTML = list[1].writerNickname;
@@ -898,10 +895,8 @@
 
 
                 async function showNextFeedData() {
-                    await loadNextFiveFeedData();
                     await getNextFeedData();
                     await FirstLoadFeedImageRun();
-
                     list = [];
                     sectionCount = sectionCount + 1;
                     // 내 능력의 한계로 새로운 게시글은 0 자식요소 1 자식요소 2 자식요소 3 같은 계단식으로 구성했다.
