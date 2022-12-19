@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,52 +10,63 @@
     <link rel="stylesheet" href="myPage.css">
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
     <style>
-        .feedWrapper{
+        .feedWrapper {
             background-color: gray;
         }
-        .feedContentBox{
+
+        .feedContentBox {
             border: 2px solid black;
         }
 
-        .feedHeader{
+        .feedHeader {
             display: flex;
             justify-content: space-between;
         }
-        .headerLeft{
-            display: flex;
-        }
-        .feedInteraction{
-            display: flex;
-            justify-content: space-between;
-        }
-        .feedInteractionDetail{
+
+        .headerLeft {
             display: flex;
         }
 
-        .profileImageCircle{
+        .feedInteraction {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .feedInteractionDetail {
+            display: flex;
+        }
+
+        .profileImageCircle {
             width: 20px;
             height: 20px;
             border-radius: 30%;
-            overflow: hidden; /*깎고 넘치는 부분을 안보이게 하기*/
+            overflow: hidden;
+            /*깎고 넘치는 부분을 안보이게 하기*/
         }
-        .profileImage{
+
+        .profileImage {
             display: block;
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-
-
+        .feedImage img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     </style>
 </head>
+
 <body>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
-    
+
     <script src="firebase.js"></script>
     <script src="auth.js"></script>
     <div class="wrapper">
@@ -75,43 +87,41 @@
             </nav>
         </header>
 
-
-        <input type="button" onclick="run()" value="게시글 가져오기">
         <div class="feedWrapper" id="feedWrapper">
             <div class="feedContentBox">
                 <div class="feedHeader">
-                <div class="headerLeft">
-                    <div class="profileImageCircle">
-                        <img class="profileImage" src="msk.png" alt="일론머스크">
+                    <div class="headerLeft">
+                        <div class="profileImageCircle">
+                            <img class="profileImage" src="msk.png" alt="일론머스크">
+                        </div>
+                        <div class="userNickname" id="userNickname0">닉네임</div>
                     </div>
-                    <div class="userNickname" id="userNickname0">닉네임</div>
+
+                    <div>
+                        <div class="feedSetting">설정</div>
+                    </div>
                 </div>
-                
-                <div>
-                    <div class="feedSetting">설정</div>
-                </div>
-                </div>
-                
+
                 <div class="feedImage">
                     <img id="feedImage0" alt="메인사진">
                 </div>
-                
+
                 <div class="feedInteraction">
-                <div class="feedInteractionDetail">
-                    <div class="iLikeIt">좋아요</div>
-                    <div class="wrtComment">댓글</div>
-                    <div class="sendToMsg">메시지</div>
+                    <div class="feedInteractionDetail">
+                        <div class="iLikeIt">좋아요</div>
+                        <div class="wrtComment">댓글</div>
+                        <div class="sendToMsg">메시지</div>
+                    </div>
+
+                    <div>
+                        <div class="bookmark">저장</div>
+                    </div>
                 </div>
-                
-                <div>
-                    <div class="bookmark">저장</div>
-                </div>
-                </div>
-                
+
                 <div class="interactionStatus">
                     <div class="howManyLikey">좋아요 n개</div>
                 </div>
-                
+
                 <div>
                     <div class="feedText" id="feedText0">게시글내용</div>
                 </div>
@@ -123,37 +133,37 @@
             <div class="feedContentBox">
                 <div class="feedHeader">
                     <div class="headerLeft">
-                    <div class="profileImageCircle">
-                        <img class="profileImage" src="msk.png" alt="일론머스크">
+                        <div class="profileImageCircle">
+                            <img class="profileImage" src="msk.png" alt="일론머스크">
+                        </div>
+                        <div class="userNickname" id="userNickname1">닉네임</div>
                     </div>
-                    <div class="userNickname" id="userNickname1">닉네임</div>
-                    </div>
-                    
+
                     <div>
-                    <div class="feedSetting">설정</div>
+                        <div class="feedSetting">설정</div>
                     </div>
                 </div>
-                
+
                 <div class="feedImage">
                     <img id="feedImage1" alt="메인사진">
                 </div>
-                
+
                 <div class="feedInteraction">
                     <div class="feedInteractionDetail">
-                    <div class="iLikeIt">좋아요</div>
-                    <div class="wrtComment">댓글</div>
-                    <div class="sendToMsg">메시지</div>
+                        <div class="iLikeIt">좋아요</div>
+                        <div class="wrtComment">댓글</div>
+                        <div class="sendToMsg">메시지</div>
                     </div>
-                    
+
                     <div>
-                    <div class="bookmark">저장</div>
+                        <div class="bookmark">저장</div>
                     </div>
                 </div>
-                
+
                 <div class="interactionStatus">
                     <div class="howManyLikey">좋아요 n개</div>
                 </div>
-                
+
                 <div>
                     <div class="feedText" id="feedText1">게시글내용</div>
                 </div>
@@ -165,37 +175,37 @@
             <div class="feedContentBox">
                 <div class="feedHeader">
                     <div class="headerLeft">
-                    <div class="profileImageCircle">
-                        <img class="profileImage" src="msk.png" alt="일론머스크">
+                        <div class="profileImageCircle">
+                            <img class="profileImage" src="msk.png" alt="일론머스크">
+                        </div>
+                        <div class="userNickname" id="userNickname2">닉네임</div>
                     </div>
-                    <div class="userNickname" id="userNickname2">닉네임</div>
-                    </div>
-                    
+
                     <div>
-                    <div class="feedSetting">설정</div>
+                        <div class="feedSetting">설정</div>
                     </div>
                 </div>
-                
+
                 <div class="feedImage">
                     <img id="feedImage2" alt="메인사진">
                 </div>
-                
+
                 <div class="feedInteraction">
                     <div class="feedInteractionDetail">
-                    <div class="iLikeIt">좋아요</div>
-                    <div class="wrtComment">댓글</div>
-                    <div class="sendToMsg">메시지</div>
+                        <div class="iLikeIt">좋아요</div>
+                        <div class="wrtComment">댓글</div>
+                        <div class="sendToMsg">메시지</div>
                     </div>
-                    
+
                     <div>
-                    <div class="bookmark">저장</div>
+                        <div class="bookmark">저장</div>
                     </div>
                 </div>
-                
+
                 <div class="interactionStatus">
                     <div class="howManyLikey">좋아요 n개</div>
                 </div>
-                
+
                 <div>
                     <div class="feedText" id="feedText2">게시글내용</div>
                 </div>
@@ -207,37 +217,37 @@
             <div class="feedContentBox">
                 <div class="feedHeader">
                     <div class="headerLeft">
-                    <div class="profileImageCircle">
-                        <img class="profileImage" src="msk.png" alt="일론머스크">
+                        <div class="profileImageCircle">
+                            <img class="profileImage" src="msk.png" alt="일론머스크">
+                        </div>
+                        <div class="userNickname" id="userNickname3">닉네임</div>
                     </div>
-                    <div class="userNickname" id="userNickname3">닉네임</div>
-                    </div>
-                    
+
                     <div>
-                    <div class="feedSetting">설정</div>
+                        <div class="feedSetting">설정</div>
                     </div>
                 </div>
-                
+
                 <div class="feedImage">
                     <img id="feedImage3" alt="메인사진">
                 </div>
-                
+
                 <div class="feedInteraction">
                     <div class="feedInteractionDetail">
-                    <div class="iLikeIt">좋아요</div>
-                    <div class="wrtComment">댓글</div>
-                    <div class="sendToMsg">메시지</div>
+                        <div class="iLikeIt">좋아요</div>
+                        <div class="wrtComment">댓글</div>
+                        <div class="sendToMsg">메시지</div>
                     </div>
-                    
+
                     <div>
-                    <div class="bookmark">저장</div>
+                        <div class="bookmark">저장</div>
                     </div>
                 </div>
-                
+
                 <div class="interactionStatus">
                     <div class="howManyLikey">좋아요 n개</div>
                 </div>
-                
+
                 <div>
                     <div class="feedText" id="feedText3">게시글내용</div>
                 </div>
@@ -249,37 +259,37 @@
             <div class="feedContentBox">
                 <div class="feedHeader">
                     <div class="headerLeft">
-                    <div class="profileImageCircle">
-                        <img class="profileImage" src="msk.png" alt="일론머스크">
+                        <div class="profileImageCircle">
+                            <img class="profileImage" src="msk.png" alt="일론머스크">
+                        </div>
+                        <div class="userNickname" id="userNickname4">닉네임</div>
                     </div>
-                    <div class="userNickname" id="userNickname4">닉네임</div>
-                    </div>
-                    
+
                     <div>
-                    <div class="feedSetting">설정</div>
+                        <div class="feedSetting">설정</div>
                     </div>
                 </div>
-                
+
                 <div class="feedImage">
                     <img id="feedImage4" alt="메인사진">
                 </div>
-                
+
                 <div class="feedInteraction">
                     <div class="feedInteractionDetail">
-                    <div class="iLikeIt">좋아요</div>
-                    <div class="wrtComment">댓글</div>
-                    <div class="sendToMsg">메시지</div>
+                        <div class="iLikeIt">좋아요</div>
+                        <div class="wrtComment">댓글</div>
+                        <div class="sendToMsg">메시지</div>
                     </div>
-                    
+
                     <div>
-                    <div class="bookmark">저장</div>
+                        <div class="bookmark">저장</div>
                     </div>
                 </div>
-                
+
                 <div class="interactionStatus">
                     <div class="howManyLikey">좋아요 n개</div>
                 </div>
-                
+
                 <div>
                     <div class="feedText" id="feedText4">게시글내용</div>
                 </div>
@@ -288,87 +298,72 @@
                 </div>
             </div>
             <div id="newSection0"></div>
+
         </div>
+        <input type="button" onclick="moreFeedLoad()" value="게시글 가져오기">
 
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
-    <script src="firebase.js"></script>
-    <script src="auth.js"></script>
-    <script>
-        //doc.data(); 원시적인 데이터인듯
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+        <script src="firebase.js"></script>
+        <script src="auth.js"></script>
+        <script>
+            //doc.data(); 원시적인 데이터인듯
 
-        var list = [];//게시글을 배열에 담는다
-        /*
-        db.collection('게시판').get().then((결과)=>{
-            결과.forEach((doc)=>{
-                //console.log(doc.data()) =>콘솔로 하나씩 찍힘
+            var list = [];//게시글을 배열에 담는다
+            /*
+            db.collection('게시판').get().then((결과)=>{
+                결과.forEach((doc)=>{
+                    //console.log(doc.data()) =>콘솔로 하나씩 찍힘
+                })
+            }) //'결과'는 임의로 삽입한 프로퍼티이다.
+            //forEach를 통해 결과로 나온 배열을 연달아 출력한다.
+            */
+            /*
+            db.collection('게시판').get().then((결과)=>
+                {
+                결과.forEach((doc)=>{
+                    list.push(doc.data())
+                })            
+            }) //순수 데이터를 list 변수에 저장
+            */
+
+            /*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+            db.collection('게시판').orderBy("timeStamp", "desc").limit(100).get().then((결과)=>
+                {
+                결과.forEach((doc)=>{
+                    console.log(doc.data());
+                    list.push(doc.data());
+                })            
+            }) //예를 들어 알파벳순으로 처음 n개 항목을 쿼리하는 방법은 다음과 같습니다. 내림차순으로 정렬은 , orderBy("timeStamp", "desc")
+            ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+            */
+
+            /*
+            db.collection('게시판').orderBy("id", "desc").startAt(20221102000000).get().then((결과)=>
+                {
+                결과.forEach((doc)=>{
+                    console.log(doc.data());
+                    list.push(doc.data());
+                })            
             })
-        }) //'결과'는 임의로 삽입한 프로퍼티이다.
-        //forEach를 통해 결과로 나온 배열을 연달아 출력한다.
-        */
-        /*
-        db.collection('게시판').get().then((결과)=>
-            {
-            결과.forEach((doc)=>{
-                list.push(doc.data())
-            })            
-        }) //순수 데이터를 list 변수에 저장
-        */
+    
+            db.collection('게시판').where("timeStamp", "<", "2022-10-25 00:00:00")
+            .where("timeStamp", ">", "2022-10-01 00:00:00")
+            .get().then((결과)=>
+                {
+                결과.forEach((doc)=>{
+                    console.log(doc.data());
+                    list.push(doc.data());
+                })            
+            }) 이거다. 기만만큼만 정보를 뽑을 수 있다.
+            */
 
-        /*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
-        db.collection('게시판').orderBy("timeStamp", "desc").limit(100).get().then((결과)=>
-            {
-            결과.forEach((doc)=>{
-                console.log(doc.data());
-                list.push(doc.data());
-            })            
-        }) //예를 들어 알파벳순으로 처음 n개 항목을 쿼리하는 방법은 다음과 같습니다. 내림차순으로 정렬은 , orderBy("timeStamp", "desc")
-        ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
-        */
-        
-        /*
-        db.collection('게시판').orderBy("id", "desc").startAt(20221102000000).get().then((결과)=>
-            {
-            결과.forEach((doc)=>{
-                console.log(doc.data());
-                list.push(doc.data());
-            })            
-        })
-
-        db.collection('게시판').where("timeStamp", "<", "2022-10-25 00:00:00")
-        .where("timeStamp", ">", "2022-10-01 00:00:00")
-        .get().then((결과)=>
-            {
-            결과.forEach((doc)=>{
-                console.log(doc.data());
-                list.push(doc.data());
-            })            
-        }) 이거다. 기만만큼만 정보를 뽑을 수 있다.
-        */
-
-        /*
-        db.collection('게시판')
-        .where("timeStamp", ">", "2022-10-09 00:00:00")
-        .where("timeStamp", "<=", "2022-10-10 00:00:00")
-        .get().then((결과)=>
-            {
-            결과.forEach((doc)=>{
-                console.log(doc.data());
-                list.push(doc.data());
-            })            
-        })
-        이 날짜를 동적으로 
-
-        function feedLoading(){
-
-            let todayDate = "";
-            let tomorrowDate = "";
-
+            /*
             db.collection('게시판')
-            .where("timeStamp", ">", todayDate)
-            .where("timeStamp", "<=", tomorrowDate)
+            .where("timeStamp", ">", "2022-10-09 00:00:00")
+            .where("timeStamp", "<=", "2022-10-10 00:00:00")
             .get().then((결과)=>
                 {
                 결과.forEach((doc)=>{
@@ -376,283 +371,228 @@
                     list.push(doc.data());
                 })            
             })
-            https://7942yongdae.tistory.com/40
-            날짜 빼기를 해서 00:00:00 붙여야하나
-        }
-        */
+            이 날짜를 동적으로 
+    
+            function feedLoading(){
+    
+                let todayDate = "";
+                let tomorrowDate = "";
+    
+                db.collection('게시판')
+                .where("timeStamp", ">", todayDate)
+                .where("timeStamp", "<=", tomorrowDate)
+                .get().then((결과)=>
+                    {
+                    결과.forEach((doc)=>{
+                        console.log(doc.data());
+                        list.push(doc.data());
+                    })            
+                })
+                https://7942yongdae.tistory.com/40
+                날짜 빼기를 해서 00:00:00 붙여야하나
+            }
+            */
 
-        function getYmd10() {
-            var d = new Date();
-            return d.getFullYear() + ((d.getMonth() + 1) > 9 ? (d.getMonth() + 1).toString() : (d.getMonth() + 1)) + (d.getDate() > 9 ? d.getDate().toString() : "0" + d.getDate().toString());
-        }//YYYYMMDD
+            function getYmd10() {
+                var d = new Date();
+                return d.getFullYear() + ((d.getMonth() + 1) > 9 ? (d.getMonth() + 1).toString() : (d.getMonth() + 1)) + (d.getDate() > 9 ? d.getDate().toString() : "0" + d.getDate().toString());
+            }//YYYYMMDD
 
-        //startAt() 또는 startAfter() 메서드를 사용하여 쿼리의 시작점을 정의합니다.
+            //startAt() 또는 startAfter() 메서드를 사용하여 쿼리의 시작점을 정의합니다.
 
-        /*
-        var lastIdCheck;
-        db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((결과)=>
-            {
-            결과.forEach((doc)=>{
-                JSON.Sdoc.data();
-            })            
-        })
-        이게 마지막 아이디어. 등록 직전 가장 최근 게시글 하나만 딱 불러와서 id값이 몇인지 확인 후 +1 하면 어떨까?
-        */
-
-        /*★22/12/15주석처리
-
-        function lastIdCheckFunc(){
-            let lastIdCheck;
+            /*
+            var lastIdCheck;
             db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((결과)=>
                 {
                 결과.forEach((doc)=>{
-                    lastIdCheck = doc.data();
-                    console.log(lastIdCheck.id);
+                    JSON.Sdoc.data();
                 })            
-            }) //이럼 객체 형식으로 데이터가 만들어진다. lastIdCheck의 id값 + 1 로 새 게시글의 id를 지정하자.
-            //글을 로딩할 때에는 마지막 글의 id값을 찾고 5or10만큼씩만 데이터를 가져오면 되겠다.
-            return lastIdCheck; //마지막 게시글 id값을 찾는 내가 만든 메소드.
-        }
-        
+            })
+            이게 마지막 아이디어. 등록 직전 가장 최근 게시글 하나만 딱 불러와서 id값이 몇인지 확인 후 +1 하면 어떨까?
+            */
 
-        
-        db.collection('게시판').where("feedId", ">=", 1)
-        .limit(5)
-        .get().then((결과)=>
-            {
-            결과.forEach((doc)=>{
-                console.log(doc.data());
-            })            
-        }) //피드id로5개씩 가져오기, 실제 적용시 반대차순으로 하기.
-        //테스트자료가 하도 많아서 테스트시 1~5가 안나온다.
-        //가장 마지막 게시글 id 값을 찾아와서 limit(5) --로 읽어내기 ex)99가 마지막이면 99 98 97 96 95 이런 식으로 만들어야한다.
-
-
-        db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((결과)=>
+            /*★22/12/15주석처리
+    
+            function lastIdCheckFunc(){
+                let lastIdCheck;
+                db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((결과)=>
+                    {
+                    결과.forEach((doc)=>{
+                        lastIdCheck = doc.data();
+                        console.log(lastIdCheck.id);
+                    })            
+                }) //이럼 객체 형식으로 데이터가 만들어진다. lastIdCheck의 id값 + 1 로 새 게시글의 id를 지정하자.
+                //글을 로딩할 때에는 마지막 글의 id값을 찾고 5or10만큼씩만 데이터를 가져오면 되겠다.
+                return lastIdCheck; //마지막 게시글 id값을 찾는 내가 만든 메소드.
+            }
+            
+    
+            
+            db.collection('게시판').where("feedId", ">=", 1)
+            .limit(5)
+            .get().then((결과)=>
                 {
                 결과.forEach((doc)=>{
-                    lastIdCheck = doc.data();//document의 내용물 = doc.data();
-                    lastId = parseInt(lastIdCheck.feedId);//DB에 있는 내가 임의로 지정한 id값은 feedId인데, 그 document의 feedid를 lastId에 담는다는 뜻
-                    feedId = parseInt(lastId);
-                })             
-        })//가장 최근 id찾는 메소드
-        //전역변수로 설정해서 하나씩 읽거나, 지역변수로 하나씩 빼서 써야겠다.
+                    console.log(doc.data());
+                })            
+            }) //피드id로5개씩 가져오기, 실제 적용시 반대차순으로 하기.
+            //테스트자료가 하도 많아서 테스트시 1~5가 안나온다.
+            //가장 마지막 게시글 id 값을 찾아와서 limit(5) --로 읽어내기 ex)99가 마지막이면 99 98 97 96 95 이런 식으로 만들어야한다.
+    
+    
+            db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((결과)=>
+                    {
+                    결과.forEach((doc)=>{
+                        lastIdCheck = doc.data();//document의 내용물 = doc.data();
+                        lastId = parseInt(lastIdCheck.feedId);//DB에 있는 내가 임의로 지정한 id값은 feedId인데, 그 document의 feedid를 lastId에 담는다는 뜻
+                        feedId = parseInt(lastId);
+                    })             
+            })//가장 최근 id찾는 메소드
+            //전역변수로 설정해서 하나씩 읽거나, 지역변수로 하나씩 빼서 써야겠다.
+    
+            // startAt, endAt은 기준점을 뺀 나머지를 보여준다. startAfter(1)는 뭐가 다른지 모르겠다.//
+            */
 
-        // startAt, endAt은 기준점을 뺀 나머지를 보여준다. startAfter(1)는 뭐가 다른지 모르겠다.//
-        */
+            /*
+            db.collection('게시판').orderBy("feedId", "desc").endAt(15).get().then((결과)=>
+                {
+                결과.forEach((doc)=>{
+                    console.log(doc.data());
+                    list.push(doc.data());
+                })            
+            })
+            */
 
-        /*
-        db.collection('게시판').orderBy("feedId", "desc").endAt(15).get().then((결과)=>
-            {
-            결과.forEach((doc)=>{
-                console.log(doc.data());
-                list.push(doc.data());
-            })            
-        })
-        */
+            var lastfeedId;
+            async function lastFeedIdCheck() {
+                await db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((결과) => {
+                    결과.forEach((doc) => {
+                        const lastIdCheck = doc.data();//document의 내용물 = doc.data();
+                        const lastId = parseInt(lastIdCheck.feedId);//DB에 있는 내가 임의로 지정한 id값은 feedId인데, 그 document의 feedid를 lastId에 담는다는 뜻
+                        lastfeedId = parseInt(lastId);
+                    })
+                })//함수로 감싸버리기
+            }
 
-        var lastfeedId;
-      async function lastFeedIdCheck(){
-              await db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((결과)=>
-                      {
-                      결과.forEach((doc)=>{
-                          const lastIdCheck = doc.data();//document의 내용물 = doc.data();
-                          const lastId = parseInt(lastIdCheck.feedId);//DB에 있는 내가 임의로 지정한 id값은 feedId인데, 그 document의 feedid를 lastId에 담는다는 뜻
-                          lastfeedId = parseInt(lastId);
-                      })             
-              })//함수로 감싸버리기
-      }
-
-      async function recentFiveFeedData(){
-        await db.collection('게시판').orderBy("feedId", "desc").where("feedId", "<=", lastfeedId)
-        .limit(5)
-        .get().then((result)=>
-            {
-            result.forEach((doc)=>{
-                //console.log(doc.data());
-                list.push(doc.data());
-            })            
-        })
-      }
-
-
-      var list = [];
-
-      async function getFeedData(){
-        await lastFeedIdCheck();
-        await recentFiveFeedData();
-        
-          
-          document.getElementById('userNickname0').innerHTML = list[0].writerNickname;
-          document.getElementById('userNickname1').innerHTML = list[1].writerNickname;
-          document.getElementById('userNickname2').innerHTML = list[2].writerNickname;
-          document.getElementById('userNickname3').innerHTML = list[3].writerNickname;
-          document.getElementById('userNickname4').innerHTML = list[4].writerNickname;
+            async function recentFiveFeedData() {
+                await db.collection('게시판').orderBy("feedId", "desc").where("feedId", "<=", lastfeedId)
+                    .limit(5)
+                    .get().then((result) => {
+                        result.forEach((doc) => {
+                            //console.log(doc.data());
+                            list.push(doc.data());
+                        })
+                    })
+            }
 
 
-          document.getElementById('feedText0').innerHTML = list[0].content;
-          document.getElementById('feedText1').innerHTML = list[1].content;
-          document.getElementById('feedText2').innerHTML = list[2].content;
-          document.getElementById('feedText3').innerHTML = list[3].content;
-          document.getElementById('feedText4').innerHTML = list[4].content;
+            var list = [];
 
-          document.getElementById('createdDate0').innerHTML = list[0].timeStamp;
-          document.getElementById('createdDate1').innerHTML = list[1].timeStamp;
-          document.getElementById('createdDate2').innerHTML = list[2].timeStamp;
-          document.getElementById('createdDate3').innerHTML = list[3].timeStamp;
-          document.getElementById('createdDate4').innerHTML = list[4].timeStamp;
+            async function getFeedData() {
+                await lastFeedIdCheck();
+                await recentFiveFeedData();
 
-        //★★반복문이 다 돌아가버리고 마지막 숫자만 j로 대입된다.
 
-        var feedImageNum;
-        var idStringFinal;
-        var img;
-        var imageLinkArr = [];
-        var j;
-        var testArr = [];
+                document.getElementById('userNickname0').innerHTML = list[0].writerNickname;
+                document.getElementById('userNickname1').innerHTML = list[1].writerNickname;
+                document.getElementById('userNickname2').innerHTML = list[2].writerNickname;
+                document.getElementById('userNickname3').innerHTML = list[3].writerNickname;
+                document.getElementById('userNickname4').innerHTML = list[4].writerNickname;
 
-        
 
-        //반복문내에서 함수를 돌리기 전에 변수를 지정해서  list[i].imagelink 값을 넣어서 함수에 넣기
-            
-            async function getFullFeedImageUrl(){
-                for(i=0; i<5; i++){
-                    imageLinkArr.push(list[i].imagelink);
+                document.getElementById('feedText0').innerHTML = list[0].content;
+                document.getElementById('feedText1').innerHTML = list[1].content;
+                document.getElementById('feedText2').innerHTML = list[2].content;
+                document.getElementById('feedText3').innerHTML = list[3].content;
+                document.getElementById('feedText4').innerHTML = list[4].content;
+
+                document.getElementById('createdDate0').innerHTML = list[0].timeStamp;
+                document.getElementById('createdDate1').innerHTML = list[1].timeStamp;
+                document.getElementById('createdDate2').innerHTML = list[2].timeStamp;
+                document.getElementById('createdDate3').innerHTML = list[3].timeStamp;
+                document.getElementById('createdDate4').innerHTML = list[4].timeStamp;
+
+
+                var feedImageNum;
+                var idStringFinal;
+                var img;
+                var imageLinkArr = [];
+                var j;
+                var fullFeedImageUrl = [];//함수 내 전역변수
+
+
+
+                //반복문내에서 함수를 돌리기 전에 변수를 지정해서  list[i].imagelink 값을 넣어서 함수에 넣기
+
+                async function getFullFeedImageUrl() {
+                    for (i = 0; i < 5; i++) {
+                        imageLinkArr.push(list[i].imagelink);
+                    }
+
+                    for (i = 0; i < 5; i++) {
+                        j = imageLinkArr[i];//각 간략화된 주소를 j에 담는다.->j를 child의 매개변수로 넣는다.
+
+                        await storageRef.child(j).getDownloadURL()
+                            .then((url) => {
+                                // Or inserted into an <img> element ->이 방법으로 써야한다.
+
+                                fullFeedImageUrl.push(url);//firebase 메소드를 통해 fullFeedImageUrl에 풀 주소를 담았다.
+                            })
+                            .catch((error) => {
+                                console.log("이미지를 불러오는 중 오류가 발생했습니다.")
+                                // Handle any errors
+                            }); //이미지를 해당 id dom에 그려준다
+                        //사진꺼내오는법
+                        //위 코드는 html요소에 src를 넣는 것이기 때문에 img태그로 바꾸면 해결된다.
+                    }
                 }
 
-                for(i=0; i<5; i++){
-                    j = imageLinkArr[i];//각 간략화된 주소를 j에 담는다.->j를 child의 매개변수로 넣는다.
-
-                    await storageRef.child(j).getDownloadURL()
-                    .then((url) => {
-                        // Or inserted into an <img> element ->이 방법으로 써야한다.
-                
-                    testArr.push(url);//firebase 메소드를 통해 testArr에 풀 주소를 담았다.
-                    })
-                    .catch((error) => {
-                        console.log("이미지를 불러오는 중 오류가 발생했습니다.")
-                        // Handle any errors
-                    }); //이미지를 해당 id dom에 그려준다
-                    //사진꺼내오는법
-                    //위 코드는 html요소에 src를 넣는 것이기 때문에 img태그로 바꾸면 해결된다.
-                }      
-            }
-
-        async function setFirstLoadFeedImage(){
-            for(i=0; i<5; i++){
-                feedImageNum = i;
-                idStringFinal = String("feedImage" + feedImageNum);
-                img = document.getElementById(idStringFinal);
-                img.setAttribute('src', testArr[i]);
-            }
-        }
-
-        async function FirstLoadFeedImageRun(){
-            await getFullFeedImageUrl();
-            setFirstLoadFeedImage();
-        }
-
-        FirstLoadFeedImageRun();
-        
-        
+                async function setFirstLoadFeedImage() {//이 함수에서 id값으로 array값을 src요소로 입힌다.
+                    for (i = 0; i < 5; i++) {
+                        feedImageNum = i;
+                        idStringFinal = String("feedImage" + feedImageNum);
+                        img = document.getElementById(idStringFinal);
+                        img.setAttribute('src', fullFeedImageUrl[i]);
+                    }
 
 
-        //img태그에 id값까지는 잘 뿌려주는데 이미지를 못올린다.
+                }
+
+                async function FirstLoadFeedImageRun() {
+                    await getFullFeedImageUrl();
+                    setFirstLoadFeedImage();
+                }
+
+                FirstLoadFeedImageRun();
+
+                //img태그에 id값까지는 잘 뿌려주는데 이미지를 못올린다.
                 //만약 서버에서 image가 없어서 오류가 나는 거라면 
                 //업로드 시 사진이 없을 때에 자동으로 해당 값을 뽀리 사진 link로 불러오게 하자.
                 //일단 일이 너무 커지니 DB초기화는 다음에 하도록 하자.
                 //image가 없거나 사진이 아니면 못올리게 하는 로직구현이 내일 할 것.
                 //너무 많은 JS연산이 있어도 제대로 돌아가지 않는 것 같다.
 
-          
-        list = [];
-      }
+                list = [];
+            }
 
-      getFeedData();//첫 로딩만 이걸로 시행
+            getFeedData();//첫 로딩만 이걸로 시행
 
-      async function loadNextFiveFeedData(){
-        await db.collection('게시판').orderBy("feedId", "desc").where("feedId", "<=", lastfeedId)
-        .limit(5)
-        .get().then((result)=>
-            {
-            result.forEach((doc)=>{
-                //console.log(doc.data());
-                list.push(doc.data());
-            })            
-        })
-      }
+            var sectionCount = 0;
+            var sectionCountName = 'newSection';
+            var sectionCountId;
 
-      async function getNextFeedData(){
-        lastfeedId = parseInt(lastfeedId - 5);
-        await recentFiveFeedData();
+            var moreSectionCount = 5;//전역변수로 5번 index부터 새로운 글의 id가 정해진다는 걸 보여줌.
 
-        for (i=0; i<5; i++){
-          console.log(list[i]);//이 자리에 list 배열 뽑는 코드를 넣어야함
-        }
-
-        list = [];
-      }
-      //6~10번째 자료를 가져오려면 getNextFeedData() 메소드를 통해 가져온 data를 array에 담아
-      //자료가 보여줄 만큼 충분히 있으면, 동적으로 HTML을 생성해
-      //자료를 HTML에 보여주면 되겠다. 
-      
-      
-      
-
-        var sectionCount = 0;
-        var sectionCountName = 'newSection';
-        var sectionCountId;
-
-        function run(){// moreContent 위에 백틱 코드가 생성된다.
-            sectionCountId = String('newSection' + sectionCount);
-            document.getElementById(sectionCountId).innerHTML = `
-            <div class="feedContentBox">
-                <div class="feedHeader">
-                <div class="headerLeft">
-                    <div class="profileImageCircle">
-                        <img class="profileImage" src="msk.png" alt="일론머스크">
-                    </div>
-                    <div class="userNickname">닉네임</div>
-                </div>
-                
-                <div>
-                    <div class="feedSetting">설정</div>
-                </div>
-                </div>
-                
-                <div class="feedImage">메인사진</div>
-                
-                <div class="feedInteraction">
-                <div class="feedInteractionDetail">
-                    <div class="iLikeIt">좋아요</div>
-                    <div class="wrtComment">댓글</div>
-                    <div class="sendToMsg">메시지</div>
-                </div>
-                
-                <div>
-                    <div class="bookmark">저장</div>
-                </div>
-                </div>
-                
-                <div class="interactionStatus">
-                    <div class="howManyLikey">좋아요 n개</div>
-                </div>
-                
-                <div>
-                    <div class="feedText">게시글내용</div>
-                </div>
-                <div>
-                    <div class="createdDate">날짜</div>
-                </div>
-            </div>
-
+            function moreFeedLoad() {// moreContent 위에 백틱 코드가 생성된다.
+                sectionCountId = String('newSection' + sectionCount);
+                document.getElementById(sectionCountId).innerHTML = `
             <div class="feedContentBox">
                 <div class="feedHeader">
                     <div class="headerLeft">
                     <div class="profileImageCircle">
                         <img class="profileImage" src="msk.png" alt="일론머스크">
                     </div>
-                    <div class="userNickname">닉네임</div>
+                    <div class="userNickname" id="userNickname${moreSectionCount}">닉네임</div>
                     </div>
                     
                     <div>
@@ -660,7 +600,9 @@
                     </div>
                 </div>
                 
-                <div class="feedImage">메인사진</div>
+                <div class="feedImage">
+                    <img id="feedImage${moreSectionCount}" alt="메인사진">
+                </div>
                 
                 <div class="feedInteraction">
                     <div class="feedInteractionDetail">
@@ -679,10 +621,10 @@
                 </div>
                 
                 <div>
-                    <div class="feedText">게시글내용</div>
+                    <div class="feedText" id="feedText${moreSectionCount}">게시글내용</div>
                 </div>
                 <div>
-                    <div class="createdDate">날짜</div>
+                    <div class="createdDate" id="createdDate${moreSectionCount}">날짜</div>
                 </div>
             </div>
 
@@ -692,7 +634,7 @@
                     <div class="profileImageCircle">
                         <img class="profileImage" src="msk.png" alt="일론머스크">
                     </div>
-                    <div class="userNickname">닉네임</div>
+                    <div class="userNickname" id="userNickname${moreSectionCount + 1}">닉네임</div>
                     </div>
                     
                     <div>
@@ -700,7 +642,9 @@
                     </div>
                 </div>
                 
-                <div class="feedImage">메인사진</div>
+                <div class="feedImage">
+                    <img id="feedImage${moreSectionCount + 1}" alt="메인사진">
+                </div>
                 
                 <div class="feedInteraction">
                     <div class="feedInteractionDetail">
@@ -719,10 +663,10 @@
                 </div>
                 
                 <div>
-                    <div class="feedText">게시글내용</div>
+                    <div class="feedText" id="feedText${moreSectionCount + 1}">게시글내용</div>
                 </div>
                 <div>
-                    <div class="createdDate">날짜</div>
+                    <div class="createdDate" id="createdDate${moreSectionCount + 1}">날짜</div>
                 </div>
             </div>
 
@@ -732,7 +676,7 @@
                     <div class="profileImageCircle">
                         <img class="profileImage" src="msk.png" alt="일론머스크">
                     </div>
-                    <div class="userNickname">닉네임</div>
+                    <div class="userNickname" id="userNickname${moreSectionCount + 2}">닉네임</div>
                     </div>
                     
                     <div>
@@ -740,7 +684,9 @@
                     </div>
                 </div>
                 
-                <div class="feedImage">메인사진</div>
+                <div class="feedImage">
+                    <img id="feedImage${moreSectionCount + 2}" alt="메인사진">
+                </div>
                 
                 <div class="feedInteraction">
                     <div class="feedInteractionDetail">
@@ -759,10 +705,10 @@
                 </div>
                 
                 <div>
-                    <div class="feedText">게시글내용</div>
+                    <div class="feedText" id="feedText${moreSectionCount + 2}">게시글내용</div>
                 </div>
                 <div>
-                    <div class="createdDate">날짜</div>
+                    <div class="createdDate" id="createdDate${moreSectionCount + 2}">날짜</div>
                 </div>
             </div>
 
@@ -772,7 +718,7 @@
                     <div class="profileImageCircle">
                         <img class="profileImage" src="msk.png" alt="일론머스크">
                     </div>
-                    <div class="userNickname">닉네임</div>
+                    <div class="userNickname" id="userNickname${moreSectionCount + 3}">닉네임</div>
                     </div>
                     
                     <div>
@@ -780,7 +726,9 @@
                     </div>
                 </div>
                 
-                <div class="feedImage">메인사진</div>
+                <div class="feedImage">
+                    <img id="feedImage${moreSectionCount + 3}" alt="메인사진">
+                </div>
                 
                 <div class="feedInteraction">
                     <div class="feedInteractionDetail">
@@ -799,18 +747,172 @@
                 </div>
                 
                 <div>
-                    <div class="feedText">게시글내용</div>
+                    <div class="feedText" id="feedText${moreSectionCount + 3}">게시글내용</div>
                 </div>
                 <div>
-                    <div class="createdDate">날짜</div>
+                    <div class="createdDate" id="createdDate${moreSectionCount + 3}">날짜</div>
                 </div>
             </div>
+
+            <div class="feedContentBox">
+                <div class="feedHeader">
+                    <div class="headerLeft">
+                    <div class="profileImageCircle">
+                        <img class="profileImage" src="msk.png" alt="일론머스크">
+                    </div>
+                    <div class="userNickname" id="userNickname${moreSectionCount + 4}">닉네임</div>
+                    </div>
+                    
+                    <div>
+                    <div class="feedSetting">설정</div>
+                    </div>
+                </div>
+                
+                <div class="feedImage">
+                    <img id="feedImage${moreSectionCount + 4}" alt="메인사진">
+                </div>
+                
+                <div class="feedInteraction">
+                    <div class="feedInteractionDetail">
+                    <div class="iLikeIt">좋아요</div>
+                    <div class="wrtComment">댓글</div>
+                    <div class="sendToMsg">메시지</div>
+                    </div>
+                    
+                    <div>
+                    <div class="bookmark">저장</div>
+                    </div>
+                </div>
+                
+                <div class="interactionStatus">
+                    <div class="howManyLikey">좋아요 n개</div>
+                </div>
+                
+                <div>
+                    <div class="feedText" id="feedText${moreSectionCount + 4}">게시글내용</div>
+                </div>
+                <div>
+                    <div class="createdDate" id="createdDate${moreSectionCount + 4}">날짜</div>
+                </div>
+            </div>
+
             <div id="${sectionCountName + parseInt(sectionCount + 1)}"></div>
             `
-            sectionCount = sectionCount + 1;
-            // 내 능력의 한계로 새로운 게시글은 0 자식요소 1 자식요소 2 자식요소 3 같은 계단식으로 구성했다.
-            //sectionCount Name Id 등은 이를 표현하기 위한 변수이다.
-      }
-    </script>
+
+
+                async function loadNextFiveFeedData() {
+                    await db.collection('게시판').orderBy("feedId", "desc").where("feedId", "<=", lastfeedId)
+                        .limit(5)
+                        .get().then((result) => {
+                            result.forEach((doc) => {
+                                //console.log(doc.data());
+                                list.push(doc.data());
+                            })
+                        })
+                }
+
+                async function getNextFeedData() {
+                    lastfeedId = parseInt(lastfeedId - 5);
+                    const userNickname = "userNickname";
+                    const feedText = "feedText";
+                    const createdDate = "createdDate";
+
+                    await recentFiveFeedData();
+
+
+                    document.getElementById(userNickname + moreSectionCount).innerHTML = list[0].writerNickname;
+                    document.getElementById(userNickname + (moreSectionCount + 1)).innerHTML = list[1].writerNickname;
+                    document.getElementById(userNickname + (moreSectionCount + 2)).innerHTML = list[2].writerNickname;
+                    document.getElementById(userNickname + (moreSectionCount + 3)).innerHTML = list[3].writerNickname;
+                    document.getElementById(userNickname + (moreSectionCount + 4)).innerHTML = list[4].writerNickname;
+
+
+                    document.getElementById(feedText + moreSectionCount).innerHTML = list[0].content;
+                    document.getElementById(feedText + (moreSectionCount + 1)).innerHTML = list[1].content;
+                    document.getElementById(feedText + (moreSectionCount + 2)).innerHTML = list[2].content;
+                    document.getElementById(feedText + (moreSectionCount + 3)).innerHTML = list[3].content;
+                    document.getElementById(feedText + (moreSectionCount + 4)).innerHTML = list[4].content;
+
+                    document.getElementById(createdDate + moreSectionCount).innerHTML = list[0].timeStamp;
+                    document.getElementById(createdDate + (moreSectionCount + 1)).innerHTML = list[1].timeStamp;
+                    document.getElementById(createdDate + (moreSectionCount + 2)).innerHTML = list[2].timeStamp;
+                    document.getElementById(createdDate + (moreSectionCount + 3)).innerHTML = list[3].timeStamp;
+                    document.getElementById(createdDate + (moreSectionCount + 1)).innerHTML = list[4].timeStamp;
+
+                    //이 자리에 list 배열 뽑는 코드를 넣어야함
+
+                }
+                //6~10번째 자료를 가져오려면 getNextFeedData() 메소드를 통해 가져온 data를 array에 담아
+                //자료가 보여줄 만큼 충분히 있으면, 동적으로 HTML을 생성해
+                //자료를 HTML에 보여주면 되겠다. 
+
+
+
+                var feedImageNum;
+                var idStringFinal;
+                var img;
+                var imageLinkArr = [];
+                var j;
+                var fullFeedImageUrl = [];
+
+
+
+                //반복문내에서 함수를 돌리기 전에 변수를 지정해서  list[i].imagelink 값을 넣어서 함수에 넣기
+
+                async function getFullFeedImageUrl() {
+                    for (i = 0; i < 5; i++) {
+                        imageLinkArr.push(list[i].imagelink);
+                    }
+
+                    for (i = 0; i < 5; i++) {
+                        j = imageLinkArr[i];//각 간략화된 주소를 j에 담는다.->j를 child의 매개변수로 넣는다.
+
+                        await storageRef.child(j).getDownloadURL()
+                            .then((url) => {
+                                // Or inserted into an <img> element ->이 방법으로 써야한다.
+
+                                fullFeedImageUrl.push(url);//firebase 메소드를 통해 fullFeedImageUrl에 풀 주소를 담았다.
+                            })
+                            .catch((error) => {
+                                console.log("이미지를 불러오는 중 오류가 발생했습니다.")
+                                // Handle any errors
+                            }); //이미지를 해당 id dom에 그려준다
+                        //사진꺼내오는법
+                        //위 코드는 html요소에 src를 넣는 것이기 때문에 img태그로 바꾸면 해결된다.
+                    }
+                }
+
+                async function setFirstLoadFeedImage() {
+                    for (i = 0; i < 5; i++) {
+                        let a = moreSectionCount + i;
+                        idStringFinal = String("feedImage" + a);//id값을 동적으로 생성
+                        img = document.getElementById(idStringFinal);
+                        img.setAttribute('src', fullFeedImageUrl[i]);
+                    }
+                }
+
+                async function FirstLoadFeedImageRun() {
+                    await getFullFeedImageUrl();
+                    setFirstLoadFeedImage();
+                }
+
+
+                async function showNextFeedData() {
+                    await loadNextFiveFeedData();
+                    await getNextFeedData();
+                    await FirstLoadFeedImageRun();
+
+                    list = [];
+                    sectionCount = sectionCount + 1;
+                    // 내 능력의 한계로 새로운 게시글은 0 자식요소 1 자식요소 2 자식요소 3 같은 계단식으로 구성했다.
+                    //sectionCount Name Id 등은 이를 표현하기 위한 변수이다.
+                    moreSectionCount = moreSectionCount + 5;
+                }
+
+                showNextFeedData();
+
+            }
+        </script>
 </body>
+
 </html>
