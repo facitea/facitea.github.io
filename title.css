@@ -3,7 +3,7 @@ body{
     padding: 0;
 }
 .wrapper{
-    width: 100%;
+    width: auto;
     margin: 0 auto;
 }
 ul{
@@ -39,9 +39,30 @@ h1{
     margin: 10px 2px 2px 2px;
     text-align: center;
 }
-@media all and (min-width:992px) {
+/*@media all and (min-width:992px) {
     .wrapper{
         width: 992px;
         margin: 0 auto;
     }
+}*/
+
+@media screen and (min-width:1024px) {
+	.wrapper{
+        width: 768px;
+        margin: 0 auto;
+    }
 }
+@media screen and (min-width:768px) and (max-width: 1023px) {
+	.wrapper{
+        width: 768px;
+        margin: 0 auto;
+    }
+}
+/*
+@media screen and (max-width:767px){ 
+	.wrapper{
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+*/
