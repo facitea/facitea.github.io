@@ -8,55 +8,10 @@
     <title>BoardList</title>
     <link rel="stylesheet" href="title.css">
     <link rel="stylesheet" href="myPage.css">
+    <link rel="stylesheet" href="boardList.css">
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
     <style>
-        .feedWrapper {
-            background-color: gray;
-        }
-
-        .feedContentBox {
-            border: 2px solid black;
-        }
-
-        .feedHeader {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .headerLeft {
-            display: flex;
-        }
-
-        .feedInteraction {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .feedInteractionDetail {
-            display: flex;
-        }
-
-        .profileImageCircle {
-            width: 20px;
-            height: 20px;
-            border-radius: 30%;
-            overflow: hidden;
-            /*깎고 넘치는 부분을 안보이게 하기*/
-        }
-
-        .profileImage {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .feedImage img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        
     </style>
 </head>
 
@@ -86,6 +41,10 @@
                 </div>
             </nav>
         </header>
+
+        <aside class="leftAside">
+            
+        </aside>
 
         <div class="feedWrapper" id="feedWrapper">
             <div class="feedContentBox">
@@ -297,8 +256,14 @@
                     <div class="createdDate" id="createdDate4">날짜</div>
                 </div>
             </div>
+
             <div id="newSection0"></div>
+
             <input type="button" onclick="moreFeedLoad()" value="게시글 가져오기">
+
+            <aside class="rightAside">
+                
+            </aside>
         </div>
 
         
