@@ -1,16 +1,18 @@
 .feedWrapper {
-    background-color: gray;
+    background-color: #f1f3f5;
     width: 100%; /* 정렬하려는 요소의 넓이를 반드시 지정 */
     margin: 0 auto;
 }
 
 .feedContentBox {
-    border-bottom: 2px solid white;
+    border: 2px solid lightgray;
+    margin-bottom: 10px;
 }
 
 .feedHeader {
     display: flex;
     justify-content: space-between;
+    background-color: #FFDD33;
 }
 
 .headerLeft {
@@ -47,17 +49,20 @@
     height: 100%;
     object-fit: cover;
 }
+.createdDate{
+    font-size: 0.7rem;
+}
 
 @media screen and (min-width:1024px) {
     .feedWrapper {
-        background-color: gray;
+        background-color: white;
         width: 400px; /* 정렬하려는 요소의 넓이를 반드시 지정 */
         margin: 0 auto;
     }
 }
 @media screen and (min-width:768px) and (max-width: 1023px) {
     .feedWrapper {
-        background-color: gray;
+        background-color: white;
         width: 400px; /* 정렬하려는 요소의 넓이를 반드시 지정 */
         margin: 0 auto;
     }

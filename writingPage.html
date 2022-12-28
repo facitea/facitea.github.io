@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>WriteDown</title>
     <link rel="stylesheet" href="title.css">
 </head>
+
 <body>
     <div class="wrapper">
         <header>
@@ -25,14 +27,14 @@
                 </div>
             </nav>
         </header>
-    
-        <div class="writingForm"> 
+
+        <div class="writingForm">
             <textarea id="content" placeholder="내용을 입력해주세요"></textarea>
             <p>
-            <input type="file" id="uploadImage" accept=".gif, .jpg, .png">
+                <input type="file" id="uploadImage" accept=".gif, .jpg, .png">
             <p>
-            <input type="button" value="게시" onclick="submit();">
-            <img src="" id="myimg">
+                <input type="button" value="게시" onclick="submit();">
+                <img src="" id="myimg">
         </div>
     </div>
 
@@ -44,6 +46,16 @@
     <script src="firebase.js"></script>
     <script src="auth.js"></script>
     <script>
+        window.onload(
+            if (whatisUidinSession !== undefined || null) {
+                alert("ㅋ");
+            } else {
+                alert("본인인증 실패상태입니다.");
+                window.location.href = '#' //링크 뒤에 #이 붙으면 인증되지 않은 상태
+            }//개허접하지만 일단 세션값을 쭉 읽어내서 'firebase:authUser' 키값을 찾고 해당 value값이 있으면 인증된걸로 치자 하..
+        //인증을 해서 갖다 쓰자. 인증 안되면 아무것도 못하게 하자. 함수로 만들어서 매 순간 끼워넣어야한다.
+        );
+
         /*
         db.collection("게시판").add({
             title: "Ada",
@@ -57,8 +69,8 @@
             console.error("Error adding document: ", error);
         });
         */
- 
-            
+
+
         /*
         function lastIdCheckFunc(){
             let lastIdCheck;
@@ -81,21 +93,21 @@
         var lastId; //DB에 저장된 가장 최신글의 feedId값 변수
         var feedId;
 
-        function submit(){
+        function submit() {
             var today = new Date();
 
             var year = today.getFullYear();
             var month = ('0' + (today.getMonth() + 1)).slice(-2);
             var day = ('0' + today.getDate()).slice(-2);
- 
-            var dateString = year + '-' + month  + '-' + day;
+
+            var dateString = year + '-' + month + '-' + day;
             let simpleDateString = year + month + day;
 
-            var hours = ('0' + today.getHours()).slice(-2); 
+            var hours = ('0' + today.getHours()).slice(-2);
             var minutes = ('0' + today.getMinutes()).slice(-2);
-            var seconds = ('0' + today.getSeconds()).slice(-2); 
+            var seconds = ('0' + today.getSeconds()).slice(-2);
 
-            var timeString = hours + ':' + minutes  + ':' + seconds;
+            var timeString = hours + ':' + minutes + ':' + seconds;
             let simpleTimeString = hours + minutes + seconds;
             var dateAndTime = dateString + " " + timeString; //날짜 만드는 함수 새로 만들어야겠네 후..
             let dateId = parseInt(simpleDateString + simpleTimeString);
@@ -103,12 +115,12 @@
             let content = document.getElementById('content').value;//게시글 내용
 
 
-           // await lastIdCheckFunc();
+            // await lastIdCheckFunc();
             var lastIdCheck;//document의 내용물을 얻기 위한 과정. object형식으로 반환.
             var lastId; //DB에 저장된 가장 최신글의 feedId값 변수
             var feedId;
 
-            function uploadImage(){
+            function uploadImage() {
                 let file = document.getElementById('uploadImage').files[0];
                 let 저장할경로 = storageRef.child('feedImage/' + dateId);
                 let 업로드작업 = 저장할경로.put(file);
@@ -118,13 +130,12 @@
 
             let imagePath = storageRef.child('feedImage/' + dateId).fullPath;
 
-            db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((결과)=>
-                {
-                결과.forEach((doc)=>{
+            db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((결과) => {
+                결과.forEach((doc) => {
                     lastIdCheck = doc.data();//document의 내용물 = doc.data();
                     lastId = parseInt(lastIdCheck.feedId);//DB에 있는 내가 임의로 지정한 id값은 feedId인데, 그 document의 feedid를 lastId에 담는다는 뜻
                     feedId = parseInt(lastId + 1);
-                })             
+                })
             })
 
             const user = firebase.auth().currentUser;
@@ -145,38 +156,38 @@
                     writerId: uid,
                     writerNickname: displayName,
                 })
-                .then((docRef) => {
-                    console.log("Document written with ID: ", docRef.id);
-                    console.log("내용은 :", content);
-                    console.log("시간은 :", dateAndTime);
-                    console.log("ID는 :", feedId);
-                    console.log("사진 URL은 :", imagePath);
-                    console.log("작성자 ID는 :", uid);
-                    console.log("작성자 닉네임은 :", displayName);//생각해보니 작성자 페이지 url을 넘겨줘도 되겠다.
-                    alert("글 작성 완료! 실례지만 Board 탭에서 게시글 확인 부탁드립니다!");
-                })
-                .catch((error) => {
-                    console.error("Error adding document: ", error);
-                })  
+                    .then((docRef) => {
+                        console.log("Document written with ID: ", docRef.id);
+                        console.log("내용은 :", content);
+                        console.log("시간은 :", dateAndTime);
+                        console.log("ID는 :", feedId);
+                        console.log("사진 URL은 :", imagePath);
+                        console.log("작성자 ID는 :", uid);
+                        console.log("작성자 닉네임은 :", displayName);//생각해보니 작성자 페이지 url을 넘겨줘도 되겠다.
+                        alert("글 작성 완료! 실례지만 Board 탭에서 게시글 확인 부탁드립니다!");
+                    })
+                    .catch((error) => {
+                        console.error("Error adding document: ", error);
+                    })
             }
 
             setTimeout(submitTheContent, 3000); //임시로 비동시 처리. 3000s 후 submitcontent 실행
 
-            
+
         } // timestamp는 고정하고, 만약 그것이 수정된다면 새로운 timestamp 테이블에 담아야겠다.
 
-        
+
 
 
 
 
         //웹개발시 일반적으로 이미지는 database에 업로드하지 않습니다. 일반 하드인 Storage라는 곳에 올리셔야합니다. 그리고 Storage에 저장된 url을 가져와서 database에 저장합니다.
-        
+
         //https://firebase.google.com/docs/firestore/quickstart#web-version-8 주소 나온대로 치면 다 된다.
         //https://codingapple.com/unit/firebase-installation-with-npm/ 참고할것
 
 
-        
+
 
 
         //지금부터는 사진 꺼내오는 법임.
@@ -185,31 +196,32 @@
 
 
         storageRef.child('feedImage/안녕').getDownloadURL()
-        .then((url) => {
-            // `url` is the download URL for 'images/stars.jpg'
+            .then((url) => {
+                // `url` is the download URL for 'images/stars.jpg'
 
-            // This can be downloaded directly:
-            var xhr = new XMLHttpRequest();
-            xhr.responseType = 'blob';
-            xhr.onload = (event) => {
-            var blob = xhr.response;
-            };
-            xhr.open('GET', url);
-            xhr.send();
+                // This can be downloaded directly:
+                var xhr = new XMLHttpRequest();
+                xhr.responseType = 'blob';
+                xhr.onload = (event) => {
+                    var blob = xhr.response;
+                };
+                xhr.open('GET', url);
+                xhr.send();
 
-            // Or inserted into an <img> element ->이 방법으로 써야한다.
-            var img = document.getElementById('myimg');
-            img.setAttribute('src', url);
-        })
-        .catch((error) => {
-            // Handle any errors
-        }); //이미지를 해당 id dom에 그려준다
+                // Or inserted into an <img> element ->이 방법으로 써야한다.
+                var img = document.getElementById('myimg');
+                img.setAttribute('src', url);
+            })
+            .catch((error) => {
+                // Handle any errors
+            }); //이미지를 해당 id dom에 그려준다
         //사진꺼내오는법
 
-        
 
-        
+
+
     </script>
-    
+
 </body>
+
 </html>

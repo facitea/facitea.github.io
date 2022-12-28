@@ -5,6 +5,7 @@ body{
 .wrapper{
     width: auto;
     margin: 0 auto;
+    background-color: #f1f3f5;
 }
 ul{
     list-style: none;
@@ -29,7 +30,7 @@ a{
     color: black;
 }
 header{
-    background-color: lightgray;
+    background-color: #FFDD33;
 }
 h1{
     margin: 4px 4px 4px 7px;
