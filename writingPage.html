@@ -46,15 +46,16 @@
     <script src="firebase.js"></script>
     <script src="auth.js"></script>
     <script>
-        window.onload(
+        /*window.onload(
             if (whatisUidinSession !== undefined || null) {
-                alert("ㅋ");
+                alert("본인인증 완료");
             } else {
                 alert("본인인증 실패상태입니다.");
                 window.location.href = '#' //링크 뒤에 #이 붙으면 인증되지 않은 상태
             }//개허접하지만 일단 세션값을 쭉 읽어내서 'firebase:authUser' 키값을 찾고 해당 value값이 있으면 인증된걸로 치자 하..
         //인증을 해서 갖다 쓰자. 인증 안되면 아무것도 못하게 하자. 함수로 만들어서 매 순간 끼워넣어야한다.
         );
+        */
 
         /*
         db.collection("게시판").add({
@@ -164,7 +165,7 @@
                         console.log("사진 URL은 :", imagePath);
                         console.log("작성자 ID는 :", uid);
                         console.log("작성자 닉네임은 :", displayName);//생각해보니 작성자 페이지 url을 넘겨줘도 되겠다.
-                        alert("글 작성 완료! 실례지만 Board 탭에서 게시글 확인 부탁드립니다!");
+                        alert("글 작성 완료! Board 탭에서 게시글 확인해주세요!");
                     })
                     .catch((error) => {
                         console.error("Error adding document: ", error);
