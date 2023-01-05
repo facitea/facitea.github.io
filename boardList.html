@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
@@ -7,12 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BoardList</title>
     <link rel="stylesheet" href="title.css">
-    <link rel="stylesheet" href="myPage.css">
     <link rel="stylesheet" href="boardList.css">
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
-    <style>
-        
-    </style>
 </head>
 
 <body>
@@ -28,7 +24,7 @@
         <header>
             <nav>
                 <div class="navLeftSide">
-                    <h1><a href="/index.html">Animall</a></h1>
+                    <h1><a href="./index.html">Animall</a></h1>
                 </div>
                 <div class="navRightSide">
                     <ul>
@@ -57,7 +53,7 @@
                     </div>
 
                     <div>
-                        <div class="feedSetting" onclick="">설정</div>
+                        <div class="feedSetting">설정</div>
                     </div>
                 </div>
 
@@ -279,22 +275,6 @@
             //doc.data(); 원시적인 데이터인듯
 
             var list = [];//게시글을 배열에 담는다
-            /*
-            db.collection('게시판').get().then((결과)=>{
-                결과.forEach((doc)=>{
-                    //console.log(doc.data()) =>콘솔로 하나씩 찍힘
-                })
-            }) //'결과'는 임의로 삽입한 프로퍼티이다.
-            //forEach를 통해 결과로 나온 배열을 연달아 출력한다.
-            */
-            /*
-            db.collection('게시판').get().then((결과)=>
-                {
-                결과.forEach((doc)=>{
-                    list.push(doc.data())
-                })            
-            }) //순수 데이터를 list 변수에 저장
-            */
 
             /*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
             db.collection('게시판').orderBy("timeStamp", "desc").limit(100).get().then((결과)=>
@@ -339,99 +319,23 @@
                 })            
             })
             이 날짜를 동적으로 
-    
-            function feedLoading(){
-    
-                let todayDate = "";
-                let tomorrowDate = "";
-    
-                db.collection('게시판')
-                .where("timeStamp", ">", todayDate)
-                .where("timeStamp", "<=", tomorrowDate)
-                .get().then((결과)=>
-                    {
-                    결과.forEach((doc)=>{
-                        console.log(doc.data());
-                        list.push(doc.data());
-                    })            
-                })
+
                 https://7942yongdae.tistory.com/40
-                날짜 빼기를 해서 00:00:00 붙여야하나
-            }
             */
 
-            function getYmd10() {
+            const getYmd10 = () => {
                 var d = new Date();
                 return d.getFullYear() + ((d.getMonth() + 1) > 9 ? (d.getMonth() + 1).toString() : (d.getMonth() + 1)) + (d.getDate() > 9 ? d.getDate().toString() : "0" + d.getDate().toString());
             }//YYYYMMDD
 
             //startAt() 또는 startAfter() 메서드를 사용하여 쿼리의 시작점을 정의합니다.
 
-            /*
-            var lastIdCheck;
-            db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((결과)=>
-                {
-                결과.forEach((doc)=>{
-                    JSON.Sdoc.data();
-                })            
-            })
-            이게 마지막 아이디어. 등록 직전 가장 최근 게시글 하나만 딱 불러와서 id값이 몇인지 확인 후 +1 하면 어떨까?
-            */
-
             /*★22/12/15주석처리
-    
-            function lastIdCheckFunc(){
-                let lastIdCheck;
-                db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((결과)=>
-                    {
-                    결과.forEach((doc)=>{
-                        lastIdCheck = doc.data();
-                        console.log(lastIdCheck.id);
-                    })            
-                }) //이럼 객체 형식으로 데이터가 만들어진다. lastIdCheck의 id값 + 1 로 새 게시글의 id를 지정하자.
-                //글을 로딩할 때에는 마지막 글의 id값을 찾고 5or10만큼씩만 데이터를 가져오면 되겠다.
-                return lastIdCheck; //마지막 게시글 id값을 찾는 내가 만든 메소드.
-            }
-            
-    
-            
-            db.collection('게시판').where("feedId", ">=", 1)
-            .limit(5)
-            .get().then((결과)=>
-                {
-                결과.forEach((doc)=>{
-                    console.log(doc.data());
-                })            
-            }) //피드id로5개씩 가져오기, 실제 적용시 반대차순으로 하기.
-            //테스트자료가 하도 많아서 테스트시 1~5가 안나온다.
-            //가장 마지막 게시글 id 값을 찾아와서 limit(5) --로 읽어내기 ex)99가 마지막이면 99 98 97 96 95 이런 식으로 만들어야한다.
-    
-    
-            db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((결과)=>
-                    {
-                    결과.forEach((doc)=>{
-                        lastIdCheck = doc.data();//document의 내용물 = doc.data();
-                        lastId = parseInt(lastIdCheck.feedId);//DB에 있는 내가 임의로 지정한 id값은 feedId인데, 그 document의 feedid를 lastId에 담는다는 뜻
-                        feedId = parseInt(lastId);
-                    })             
-            })//가장 최근 id찾는 메소드
-            //전역변수로 설정해서 하나씩 읽거나, 지역변수로 하나씩 빼서 써야겠다.
-    
-            // startAt, endAt은 기준점을 뺀 나머지를 보여준다. startAfter(1)는 뭐가 다른지 모르겠다.//
-            */
-
-            /*
-            db.collection('게시판').orderBy("feedId", "desc").endAt(15).get().then((결과)=>
-                {
-                결과.forEach((doc)=>{
-                    console.log(doc.data());
-                    list.push(doc.data());
-                })            
-            })
+            startAt, endAt은 기준점을 뺀 나머지를 보여준다. startAfter(1)는 뭐가 다른지 모르겠다.
             */
 
             var lastfeedId;
-            async function lastFeedIdCheck() {
+            const lastFeedIdCheck = async () => {
                 await db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((결과) => {
                     결과.forEach((doc) => {
                         const lastIdCheck = doc.data();//document의 내용물 = doc.data();
@@ -441,7 +345,7 @@
                 })//함수로 감싸버리기
             }
 
-            async function recentFiveFeedData() {
+            const recentFiveFeedData = async () => {
                 await db.collection('게시판').orderBy("feedId", "desc").where("feedId", "<=", lastfeedId)
                     .limit(5)
                     .get().then((result) => {
@@ -450,33 +354,20 @@
                         })
                     })
             }
-            
-            //var list = [];
 
-            async function getFeedData() {
+            const getFeedData = async () => {
                 await lastFeedIdCheck();
                 await recentFiveFeedData();
 
+                const userNickname = 'userNickname';
+                const feedText = 'feedText';
+                const createdDate = 'createdDate';
 
-                document.getElementById('userNickname0').innerHTML = list[0].writerNickname;
-                document.getElementById('userNickname1').innerHTML = list[1].writerNickname;
-                document.getElementById('userNickname2').innerHTML = list[2].writerNickname;
-                document.getElementById('userNickname3').innerHTML = list[3].writerNickname;
-                document.getElementById('userNickname4').innerHTML = list[4].writerNickname;
-
-
-                document.getElementById('feedText0').innerHTML = list[0].content;
-                document.getElementById('feedText1').innerHTML = list[1].content;
-                document.getElementById('feedText2').innerHTML = list[2].content;
-                document.getElementById('feedText3').innerHTML = list[3].content;
-                document.getElementById('feedText4').innerHTML = list[4].content;
-
-                document.getElementById('createdDate0').innerHTML = list[0].timeStamp;
-                document.getElementById('createdDate1').innerHTML = list[1].timeStamp;
-                document.getElementById('createdDate2').innerHTML = list[2].timeStamp;
-                document.getElementById('createdDate3').innerHTML = list[3].timeStamp;
-                document.getElementById('createdDate4').innerHTML = list[4].timeStamp;
-
+                for (let i = 0; i < 5; i++){
+                    document.getElementById(userNickname + i).innerHTML = list[i].writerNickname;
+                    document.getElementById(feedText + i).innerHTML = list[i].content;
+                    document.getElementById(createdDate + i).innerHTML = list[i].timeStamp;
+                }
 
                 var feedImageNum;
                 var idStringFinal;
@@ -485,16 +376,14 @@
                 var j;
                 var fullFeedImageUrl = [];//함수 내 전역변수
 
-
-
                 //반복문내에서 함수를 돌리기 전에 변수를 지정해서  list[i].imagelink 값을 넣어서 함수에 넣기
 
-                async function getFullFeedImageUrl() {
-                    for (i = 0; i < 5; i++) {
+                const getFullFeedImageUrl = async () => {
+                    for (let i = 0; i < 5; i++) {
                         imageLinkArr.push(list[i].imagelink);
                     }
 
-                    for (i = 0; i < 5; i++) {
+                    for (let i = 0; i < 5; i++) {
                         j = imageLinkArr[i];//각 간략화된 주소를 j에 담는다.->j를 child의 매개변수로 넣는다.
 
                         await storageRef.child(j).getDownloadURL()
@@ -512,8 +401,8 @@
                     }
                 }
 
-                async function setFirstLoadFeedImage() {//이 함수에서 id값으로 array값을 src요소로 입힌다.
-                    for (i = 0; i < 5; i++) {
+                const setFirstLoadFeedImage = async () => {//이 함수에서 id값으로 array값을 src요소로 입힌다.
+                    for (let i = 0; i < 5; i++) {
                         feedImageNum = i;
                         idStringFinal = String("feedImage" + feedImageNum);
                         img = document.getElementById(idStringFinal);
@@ -523,7 +412,7 @@
 
                 }
 
-                async function FirstLoadFeedImageRun() {
+                const FirstLoadFeedImageRun = async () => {
                     await getFullFeedImageUrl();
                     setFirstLoadFeedImage();
                 }
@@ -548,7 +437,7 @@
 
             var moreSectionCount = 5;//전역변수로 5번 index부터 새로운 글의 id가 정해진다는 걸 보여줌.
 
-            function moreFeedLoad() {// moreContent 위에 백틱 코드가 생성된다.
+            const moreFeedLoad = () => {// moreContent 위에 백틱 코드가 생성된다.
                 sectionCountId = String('newSection' + sectionCount);
                 document.getElementById(sectionCountId).innerHTML = `
             <div class="feedContentBox">
@@ -765,7 +654,7 @@
             `
 
 
-                async function loadNextFiveFeedData() {
+                const loadNextFiveFeedData = async () => {
                     await db.collection('게시판').orderBy("feedId", "desc").where("feedId", "<=", lastfeedId)
                         .limit(5)
                         .get().then((result) => {
@@ -775,7 +664,7 @@
                         })
                 }
 
-                async function getNextFeedData() {
+                const getNextFeedData = async () => {
                     lastfeedId = parseInt(lastfeedId - 5);
                     const userNickname = "userNickname";
                     const feedText = "feedText";
@@ -784,26 +673,11 @@
                     await recentFiveFeedData();
                     console.log(list);
 
-                    document.getElementById(userNickname + moreSectionCount).innerHTML = list[0].writerNickname;
-                    document.getElementById(userNickname + (moreSectionCount + 1)).innerHTML = list[1].writerNickname;
-                    document.getElementById(userNickname + (moreSectionCount + 2)).innerHTML = list[2].writerNickname;
-                    document.getElementById(userNickname + (moreSectionCount + 3)).innerHTML = list[3].writerNickname;
-                    document.getElementById(userNickname + (moreSectionCount + 4)).innerHTML = list[4].writerNickname;
-
-
-                    document.getElementById(feedText + moreSectionCount).innerHTML = list[0].content;
-                    document.getElementById(feedText + (moreSectionCount + 1)).innerHTML = list[1].content;
-                    document.getElementById(feedText + (moreSectionCount + 2)).innerHTML = list[2].content;
-                    document.getElementById(feedText + (moreSectionCount + 3)).innerHTML = list[3].content;
-                    document.getElementById(feedText + (moreSectionCount + 4)).innerHTML = list[4].content;
-
-                    document.getElementById(createdDate + moreSectionCount).innerHTML = list[0].timeStamp;
-                    document.getElementById(createdDate + (moreSectionCount + 1)).innerHTML = list[1].timeStamp;
-                    document.getElementById(createdDate + (moreSectionCount + 2)).innerHTML = list[2].timeStamp;
-                    document.getElementById(createdDate + (moreSectionCount + 3)).innerHTML = list[3].timeStamp;
-                    document.getElementById(createdDate + (moreSectionCount + 4)).innerHTML = list[4].timeStamp;
-
-                    //이 자리에 list 배열 뽑는 코드를 넣어야함
+                    for(let i=0; i < 5; i++){
+                        document.getElementById(userNickname + (moreSectionCount + i)).innerHTML = list[i].writerNickname;
+                        document.getElementById(feedText + (moreSectionCount + i)).innerHTML = list[i].content;
+                        document.getElementById(createdDate + (moreSectionCount + i)).innerHTML = list[i].timeStamp;
+                    }
 
                 }
                 //6~10번째 자료를 가져오려면 getNextFeedData() 메소드를 통해 가져온 data를 array에 담아
@@ -823,7 +697,7 @@
 
                 //반복문내에서 함수를 돌리기 전에 변수를 지정해서  list[i].imagelink 값을 넣어서 함수에 넣기
 
-                async function getFullFeedImageUrl() {
+                const getFullFeedImageUrl = async () => {
                     for (i = 0; i < 5; i++) {
                         imageLinkArr.push(list[i].imagelink);
                     }
@@ -855,13 +729,13 @@
                     }
                 }
 
-                async function FirstLoadFeedImageRun() {
+                const FirstLoadFeedImageRun = async () => {
                     await getFullFeedImageUrl();
                     setFirstLoadFeedImage();
                 }
 
 
-                async function showNextFeedData() {
+                const showNextFeedData = async () => {
                     await getNextFeedData();
                     await FirstLoadFeedImageRun();
                     list = [];

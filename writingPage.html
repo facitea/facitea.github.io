@@ -46,48 +46,6 @@
     <script src="firebase.js"></script>
     <script src="auth.js"></script>
     <script>
-        /*window.onload(
-            if (whatisUidinSession !== undefined || null) {
-                alert("본인인증 완료");
-            } else {
-                alert("본인인증 실패상태입니다.");
-                window.location.href = '#' //링크 뒤에 #이 붙으면 인증되지 않은 상태
-            }//개허접하지만 일단 세션값을 쭉 읽어내서 'firebase:authUser' 키값을 찾고 해당 value값이 있으면 인증된걸로 치자 하..
-        //인증을 해서 갖다 쓰자. 인증 안되면 아무것도 못하게 하자. 함수로 만들어서 매 순간 끼워넣어야한다.
-        );
-        */
-
-        /*
-        db.collection("게시판").add({
-            title: "Ada",
-            content: "Lovelace",
-            date: 1815
-        })
-        .then((docRef) => {
-            console.log("Document written with ID: ", docRef.id);
-        })
-        .catch((error) => {
-            console.error("Error adding document: ", error);
-        });
-        */
-
-
-        /*
-        function lastIdCheckFunc(){
-            let lastIdCheck;
-            let lastId;
-            db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((결과)=>
-                {
-                결과.forEach((doc)=>{
-                    lastIdCheck = doc.data();
-                    lastId = lastIdCheck.feedId;
-                    console.log(lastId);
-                })             
-            }) //이럼 객체 형식으로 데이터가 만들어진다. lastIdCheck의 id값 + 1 로 새 게시글의 id를 지정하자.
-            //글을 로딩할 때에는 마지막 글의 id값을 찾고 5or10만큼씩만 데이터를 가져오면 되겠다.
-            //마지막 게시글 id값을 찾는 내가 만든 메소드. ES6 적응이 어려워 그냥 이 모양을 그대로 함수에 넣어야할듯..
-        }
-        */
         alert("로그인 해야 글 작성이 됩니다.")
 
         var lastIdCheck;//document의 내용물을 얻기 위한 과정. object형식으로 반환.

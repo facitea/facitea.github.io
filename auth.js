@@ -1,4 +1,4 @@
-function submitSignup(){
+const submitSignup = () => {
     const email = document.getElementById("loginEmail").value;
     const pwd = document.getElementById("loginPwd").value;
 
@@ -22,7 +22,7 @@ function submitSignup(){
 }
 
 let uid; //급하게 작업하여 부득이하게 아래함수의 uid값을  전역변수로 저장//var에서 let으로 변경
-function submitLogin(){
+const submitLogin = () => {
     const email = document.getElementById("loginEmail").value;
     const pwd = document.getElementById("loginPwd").value;
 
@@ -84,7 +84,7 @@ function submitLogin(){
 
 
 
-function getUserData(){
+const getUserData = () => {
     const user = firebase.auth().currentUser;
     if (user !== null) {
     // The user object has basic properties such as display name, email, etc.
@@ -100,7 +100,7 @@ function getUserData(){
     }
 }//내가 만든 함수. 유저의 data를 user 객체에 담음.
 
-function updateUsetData(updateName, personalImage){
+const updateUsetData = (updateName, personalImage) => {
     const user = firebase.auth().currentUser;
 
     user.updateProfile({
@@ -153,7 +153,7 @@ firebaseEmailAuth.onAuthStateChanged(function (user) {
 
 
 */
-function sessionCheck(){
+const sessionCheck = () => {
     let whatisUidinSession;
     for (let i=0; i<=sessionStorage.length -1; i++){
         if (sessionStorage.key(i).includes('firebase:authUser') == true){
