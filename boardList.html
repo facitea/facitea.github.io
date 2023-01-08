@@ -272,14 +272,12 @@
         <script src="firebase.js"></script>
         <script src="auth.js"></script>
         <script>
-            //doc.data(); 원시적인 데이터인듯
-
-            var list = [];//게시글을 배열에 담는다
+            let list = [];//게시글을 배열에 담는다
 
             /*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
-            db.collection('게시판').orderBy("timeStamp", "desc").limit(100).get().then((결과)=>
+            db.collection('게시판').orderBy("timeStamp", "desc").limit(100).get().then((result)=>
                 {
-                결과.forEach((doc)=>{
+                result.forEach((doc)=>{
                     console.log(doc.data());
                     list.push(doc.data());
                 })            
@@ -288,32 +286,12 @@
             */
 
             /*
-            db.collection('게시판').orderBy("id", "desc").startAt(20221102000000).get().then((결과)=>
-                {
-                결과.forEach((doc)=>{
-                    console.log(doc.data());
-                    list.push(doc.data());
-                })            
-            })
-    
-            db.collection('게시판').where("timeStamp", "<", "2022-10-25 00:00:00")
-            .where("timeStamp", ">", "2022-10-01 00:00:00")
-            .get().then((결과)=>
-                {
-                결과.forEach((doc)=>{
-                    console.log(doc.data());
-                    list.push(doc.data());
-                })            
-            }) 이거다. 기만만큼만 정보를 뽑을 수 있다.
-            */
-
-            /*
             db.collection('게시판')
             .where("timeStamp", ">", "2022-10-09 00:00:00")
             .where("timeStamp", "<=", "2022-10-10 00:00:00")
-            .get().then((결과)=>
+            .get().then((result)=>
                 {
-                결과.forEach((doc)=>{
+                result.forEach((doc)=>{
                     console.log(doc.data());
                     list.push(doc.data());
                 })            
@@ -324,7 +302,7 @@
             */
 
             const getYmd10 = () => {
-                var d = new Date();
+                const d = new Date();
                 return d.getFullYear() + ((d.getMonth() + 1) > 9 ? (d.getMonth() + 1).toString() : (d.getMonth() + 1)) + (d.getDate() > 9 ? d.getDate().toString() : "0" + d.getDate().toString());
             }//YYYYMMDD
 
@@ -334,10 +312,10 @@
             startAt, endAt은 기준점을 뺀 나머지를 보여준다. startAfter(1)는 뭐가 다른지 모르겠다.
             */
 
-            var lastfeedId;
+            let lastfeedId;
             const lastFeedIdCheck = async () => {
-                await db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((결과) => {
-                    결과.forEach((doc) => {
+                await db.collection('게시판').orderBy("timeStamp", "desc").limit(1).get().then((result) => {
+                    result.forEach((doc) => {
                         const lastIdCheck = doc.data();//document의 내용물 = doc.data();
                         const lastId = parseInt(lastIdCheck.feedId);//DB에 있는 내가 임의로 지정한 id값은 feedId인데, 그 document의 feedid를 lastId에 담는다는 뜻
                         lastfeedId = parseInt(lastId);
@@ -369,12 +347,12 @@
                     document.getElementById(createdDate + i).innerHTML = list[i].timeStamp;
                 }
 
-                var feedImageNum;
-                var idStringFinal;
-                var img;
-                var imageLinkArr = [];
-                var j;
-                var fullFeedImageUrl = [];//함수 내 전역변수
+                let feedImageNum;
+                let idStringFinal;
+                let img;
+                let imageLinkArr = [];
+                let j;
+                let fullFeedImageUrl = [];//함수 내 전역변수
 
                 //반복문내에서 함수를 돌리기 전에 변수를 지정해서  list[i].imagelink 값을 넣어서 함수에 넣기
 
@@ -401,7 +379,7 @@
                     }
                 }
 
-                const setFirstLoadFeedImage = async () => {//이 함수에서 id값으로 array값을 src요소로 입힌다.
+                const setFirstLoadFeedImage = () => {//이 함수에서 id값으로 array값을 src요소로 입힌다.
                     for (let i = 0; i < 5; i++) {
                         feedImageNum = i;
                         idStringFinal = String("feedImage" + feedImageNum);
@@ -431,11 +409,11 @@
 
             getFeedData();//첫 로딩만 이걸로 시행
 
-            var sectionCount = 0;
-            var sectionCountName = 'newSection';
-            var sectionCountId;
+            let sectionCount = 0;
+            let sectionCountName = 'newSection';
+            let sectionCountId;
 
-            var moreSectionCount = 5;//전역변수로 5번 index부터 새로운 글의 id가 정해진다는 걸 보여줌.
+            let moreSectionCount = 5;//전역변수로 5번 index부터 새로운 글의 id가 정해진다는 걸 보여줌.
 
             const moreFeedLoad = () => {// moreContent 위에 백틱 코드가 생성된다.
                 sectionCountId = String('newSection' + sectionCount);
@@ -686,12 +664,12 @@
 
 
 
-                var feedImageNum;
-                var idStringFinal;
-                var img;
-                var imageLinkArr = [];
-                var j;
-                var fullFeedImageUrl = [];
+                let feedImageNum;
+                let idStringFinal;
+                let img;
+                let imageLinkArr = [];
+                let j;
+                let fullFeedImageUrl = [];
 
 
 
@@ -720,7 +698,7 @@
                     }
                 }
 
-                async function setFirstLoadFeedImage() {
+                const setFirstLoadFeedImage = () => {
                     for (i = 0; i < 5; i++) {
                         let a = moreSectionCount + i;
                         idStringFinal = String("feedImage" + a);//id값을 동적으로 생성

@@ -163,9 +163,9 @@ const sessionCheck = () => {
     }
     
     if(whatisUidinSession !== undefined || null){
-        alert("본인인증 완료상태입니다.");
+        console.log("본인인증 완료상태입니다.");
     }else{
-        alert("본인인증 실패상태입니다.");
+        console.log("본인인증 실패상태입니다.");
         window.location.href='#' //링크 뒤에 #이 붙으면 인증되지 않은 상태
     }//개허접하지만 일단 세션값을 쭉 읽어내서 'firebase:authUser' 키값을 찾고 해당 value값이 있으면 인증된걸로 치자 하..
     //인증을 해서 갖다 쓰자. 인증 안되면 아무것도 못하게 하자. 함수로 만들어서 매 순간 끼워넣어야한다.
